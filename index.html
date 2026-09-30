@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IMPACTRA — Volunteer work, verified.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: '#1E4034',
+            ink: '#162110',
+            paper: '#F4F2EC',
+            seal: '#A87824',
+            line: '#DDDBC1',
+            'ink-2': '#445650',
+          },
+          fontFamily: {
+            serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+            sans: ['"Public Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-paper text-ink font-sans antialiased">
+
+  <!-- Navigation Bar -->
+  <header class="border-b border-line bg-paper sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-8">
+        <a href="#" class="font-serif text-2xl font-bold tracking-tight text-forest">IMPACTRA</a>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-ink-2">
+          <a href="#volunteers" class="hover:text-forest transition">For volunteers</a>
+          <a href="#organizations" class="hover:text-forest transition">For organizations</a>
+          <a href="#how-it-works" class="hover:text-forest transition">How verification works</a>
+          <a href="#verify" class="hover:text-forest transition">Verify a certificate</a>
+        </nav>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="/login.html" class="text-sm font-semibold text-ink hover:text-forest px-3 py-2 transition">Sign in</a>
+        <a href="/register.html" class="text-sm font-semibold bg-forest text-paper px-4 py-2 rounded-md hover:bg-forest/90 transition">Get started — Free</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="py-12 md:py-20 border-b border-line">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column -->
+      <div class="lg:col-span-6 space-y-6">
+        <span class="text-xs font-mono tracking-widest text-ink-2 uppercase">VOLUNTEER & NGO IMPACT TRACKER</span>
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-ink leading-tight">
+          Volunteer work, <br/><span class="italic text-forest">verified.</span>
+        </h1>
+        <p class="text-lg text-ink-2 max-w-lg leading-relaxed">
+          IMPACTRA replaces sign-in sheets, WhatsApp threads and hand-typed certificates with one record that organizations confirm and anyone can check[cite: 51, 89].
+        </p>
+        <div class="flex flex-wrap gap-4 pt-2">
+          <a href="#volunteer-signup" class="bg-forest text-paper font-semibold px-6 py-3 rounded-md shadow-sm hover:bg-forest/90 transition">I'm a volunteer</a>
+          <a href="#ngo-signup" class="border border-line bg-white text-ink font-semibold px-6 py-3 rounded-md shadow-sm hover:border-forest transition">I run an organization</a>
+        </div>
+        <p class="text-xs text-ink-2 font-mono">
+          Free for grassroots organizations. Works on low-bandwidth phones.
+        </p>
+      </div>
+
+      <!-- Right Column-->
+      <div class="lg:col-span-6 relative">
+        
+        <!-- Activity Card Preview -->
+        <div class="bg-white border border-line rounded-lg p-5 shadow-sm space-y-4 max-w-md ml-auto">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="text-xs font-mono text-ink-2">District Health — Sep 2026</span>
+              <h3 class="font-semibold text-ink text-base">Community HIV testing mobilizer</h3>
+            </div>
+            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-forest text-paper">
+              ✓ Verified
+            </span>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 py-2 border-y border-line text-xs">
+            <div>
+              <p class="text-ink-2 font-mono">Hours</p>
+              <p class="font-serif text-lg font-bold text-forest">12.5</p>
+            </div>
+            <div>
+              <p class="text-ink-2 font-mono">Reached</p>
+              <p class="font-serif text-lg font-bold text-ink">57</p>
+            </div>
+            <div>
+              <p class="text-ink-2 font-mono">Evidence</p>
+              <p class="font-semibold text-ink">2 photos</p>
+            </div>
+          </div>
+          <p class="text-[11px] font-mono text-ink-2">Verified by Grace Mwezi (Supervisor)</p>
+        </div>
+
+        <!-- Overlapping Certificate Card -->
+        <div class="bg-paper border border-line rounded-lg p-5 shadow-md max-w-xs -mt-10 ml-4 relative z-10 space-y-3">
+          <span class="text-[10px] font-mono uppercase tracking-wider text-seal block border-b border-line pb-1">CERTIFICATE OF VERIFIED SERVICE</span>
+          <h4 class="font-serif text-xl font-bold text-forest">Amara Diallo</h4>
+          <p class="text-xs text-ink-2">42 verified hours • Community HIV Testing Mobilizer • Ubuntu Health Collective</p>
+          <div class="pt-2 flex items-center justify-between">
+            <div class="w-10 h-10 bg-forest/10 border border-forest/20 rounded flex items-center justify-center font-mono text-[10px] text-forest">
+              [QR]
+            </div>
+            <span class="text-[10px] font-mono text-ink-2">Scan or click to verify</span>
+          </div>
+        </div>
+
+        <!-- Total Hours Floating Badge -->
+        <div class="bg-forest text-paper rounded-lg p-4 max-w-[200px] shadow-lg absolute -bottom-6 right-2 z-20">
+          <p class="font-serif text-3xl font-bold">126.5</p>
+          <p class="text-xs text-paper/80 font-mono mt-0.5">verified hours across 4 organizations</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Key Metrics Ribbon -->
+  <section class="bg-forest text-paper py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
+      <div class="border-b md:border-b-0 md:border-r border-paper/20 pb-4 md:pb-0">
+        <p class="font-serif text-3xl md:text-4xl font-bold">4 hrs &rarr; 1 click</p>
+        <p class="text-xs text-paper/80 font-mono mt-1">Shortened administrative verification</p>
+      </div>
+      <div class="border-b md:border-b-0 md:border-r border-paper/20 pb-4 md:pb-0">
+        <p class="font-serif text-3xl md:text-4xl font-bold">60%</p>
+        <p class="text-xs text-paper/80 font-mono mt-1">Reduction in paper clutter & lost records</p>
+      </div>
+      <div>
+        <p class="font-serif text-3xl md:text-4xl font-bold">Tamper-proof</p>
+        <p class="text-xs text-paper/80 font-mono mt-1">Cryptographic audit trail on every approval</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- verify impact -->
+  <section id="how-it-works" class="py-16 border-b border-line">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
+      
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="text-xs font-mono uppercase tracking-wider text-ink-2">VERIFICATION LOOP</span>
+        <h2 class="font-serif text-3xl font-bold text-ink">How IMPACTRA verifies impact</h2>
+      </div>
+
+      <!-- Process Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <div class="bg-white border border-line rounded-lg p-5 space-y-2">
+          <span class="text-xs font-mono text-ink-2">01 • Organization</span>
+          <h3 class="font-semibold text-ink text-base">Post an opportunity</h3>
+          <p class="text-xs text-ink-2">Filter shifts, dates, capacity, and specify what counts as evidence[cite: 89].</p>
+        </div>
+
+        <div class="bg-white border border-line rounded-lg p-5 space-y-2">
+          <span class="text-xs font-mono text-ink-2">02 • Volunteer</span>
+          <h3 class="font-semibold text-ink text-base">Log hours + evidence</h3>
+          <p class="text-xs text-ink-2">From the field, in under a minute. Photos stay private[cite: 89].</p>
+        </div>
+
+        <div class="bg-white border border-line rounded-lg p-5 space-y-2">
+          <span class="text-xs font-mono text-ink-2">03 • Organization</span>
+          <h3 class="font-semibold text-ink text-base">Verify in one tap</h3>
+          <p class="text-xs text-ink-2">Approve, or reject with a reason the volunteer can fix[cite: 51, 89].</p>
+        </div>
+
+        <div class="bg-forest/5 border border-forest/20 rounded-lg p-5 space-y-2">
+          <span class="text-xs font-mono text-forest font-semibold">04 • Both</span>
+          <h3 class="font-semibold text-forest text-base">A record that holds up</h3>
+          <p class="text-xs text-ink-2">Certificates, a public impact profile, and donor-ready reports[cite: 89].</p>
+        </div>
+
+      </div>
+
+      <!-- For Volunteers & NGOs -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-6">
+        
+        <!-- For Volunteers -->
+        <div id="volunteers" class="bg-white border border-line rounded-lg p-8 space-y-6">
+          <span class="text-xs font-mono text-ink-2 uppercase tracking-wider">FOR VOLUNTEERS</span>
+          <h3 class="font-serif text-2xl font-bold text-ink">Proof you can put on an application.</h3>
+          <ul class="space-y-3 text-sm text-ink-2">
+            <li class="flex items-start gap-2">
+              <span class="text-forest font-bold">✓</span>
+              <span>Find real opportunities from verified organizations.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-forest font-bold">✓</span>
+              <span>One history across every organization.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-forest font-bold">✓</span>
+              <span>QR-verifiable certificates and a shareable profile.</span>
+            </li>
+          </ul>
+          <a href="/register-volunteer.html" class="inline-block bg-forest text-paper font-semibold px-6 py-2.5 rounded-md text-sm hover:bg-forest/90 transition">Create a volunteer account</a>
+        </div>
+
+        <!-- For Organizations -->
+        <div id="organizations" class="bg-forest text-paper rounded-lg p-8 space-y-6">
+          <span class="text-xs font-mono text-paper/70 uppercase tracking-wider">FOR ORGANIZATIONS</span>
+          <h3 class="font-serif text-2xl font-bold text-paper">Impact data your donors will trust.</h3>
+          <ul class="space-y-3 text-sm text-paper/90">
+            <li class="flex items-start gap-2">
+              <span class="text-seal font-bold">✓</span>
+              <span>Replace paper sheets — or consolidate the tools you already use.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-seal font-bold">✓</span>
+              <span>Audit trail on every approval[cite: 89].</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-seal font-bold">✓</span>
+              <span>Reports by hours, people reached, and gender, in one export.</span>
+            </li>
+          </ul>
+          <a href="/register-ngo.html" class="inline-block bg-paper text-ink font-semibold px-6 py-2.5 rounded-md text-sm hover:bg-white transition">Register your organization</a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Quick Certificate Search Widget -->
+  <section id="verify" class="py-16 border-b border-line">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="bg-white border border-line rounded-lg p-8 shadow-sm">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+          <div class="md:col-span-6 space-y-2">
+            <h3 class="font-serif text-2xl font-bold text-ink">Checking a certificate?</h3>
+            <p class="text-xs text-ink-2">
+              Employers, universities and donors: enter a certificate code to verify authenticity instantly — no log in needed[cite: 56, 89].
+            </p>
+          </div>
+          <div class="md:col-span-6">
+            <form action="/verification.html" method="GET" class="flex gap-2">
+              <input 
+                type="text" 
+                name="id" 
+                placeholder="e.g. IMP-2026-99482-X" 
+                class="w-full bg-paper border border-line rounded-md px-3 py-2 text-sm font-mono uppercase focus:outline-none focus:border-forest" 
+                required
+              />
+              <button type="submit" class="bg-forest text-paper px-5 py-2 rounded-md font-semibold text-sm hover:bg-forest/90 transition">
+                Verify
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 bg-paper text-xs text-ink-2">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-serif text-base font-bold text-forest">IMPACTRA</span>
+        <span>&copy; 2026 IMPACTRA Platform. All rights reserved.</span>
+      </div>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-forest transition">Privacy</a>
+        <a href="#" class="hover:text-forest transition">Data Protection</a>
+        <a href="#" class="hover:text-forest transition">Terms</a>
+        <a href="#" class="hover:text-forest transition">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
