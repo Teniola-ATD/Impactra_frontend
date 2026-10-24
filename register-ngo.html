@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register Your Organization — IMPACTRA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: '#1E4034',
+            'forest-dark': '#152E25',
+            ink: '#162110',
+            paper: '#F5F4EE',
+            seal: '#A87824',
+            line: '#DDDBC1',
+            'ink-2': '#5E6E67',
+          },
+          fontFamily: {
+            serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+            sans: ['"Public Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="h-full font-sans antialiased bg-paper text-ink selection:bg-forest selection:text-paper flex flex-col justify-between">
+
+  <!-- Top Header Navigation with Stepper -->
+  <header class="bg-paper border-b border-line sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="/index.html" class="flex items-center gap-2 font-serif text-lg font-bold tracking-widest text-ink uppercase hover:opacity-90 transition-opacity">
+        <div class="w-6 h-6 rounded bg-forest text-paper flex items-center justify-center text-xs font-bold">
+          ✓
+        </div>
+        <span>IMPACTRA</span>
+      </a>
+
+      <!-- Stepper Navigation -->
+      <div class="hidden md:flex items-center gap-6 text-xs font-medium">
+        <div class="flex items-center gap-2 text-ink font-bold">
+          <span class="w-6 h-6 rounded-full bg-forest text-paper flex items-center justify-center text-xs">1</span>
+          <span>Your account</span>
+        </div>
+        <div class="flex items-center gap-2 text-ink-2">
+          <span class="w-6 h-6 rounded-full border border-line bg-white flex items-center justify-center text-xs text-ink-2">2</span>
+          <span>Organization</span>
+        </div>
+        <div class="flex items-center gap-2 text-ink-2">
+          <span class="w-6 h-6 rounded-full border border-line bg-white flex items-center justify-center text-xs text-ink-2">3</span>
+          <span>Verification</span>
+        </div>
+      </div>
+
+      <!-- Sign in link -->
+      <div class="text-xs text-ink-2">
+        Already registered? 
+        <a href="/login.html" class="font-bold text-forest hover:underline cursor-pointer ml-1">Sign in</a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Registration Container -->
+  <main class="flex-1 flex items-center justify-center p-4 sm:p-8 my-6">
+    <div class="w-full max-w-xl space-y-8">
+      
+      <!-- Header Titles -->
+      <div class="space-y-2">
+        <h1 class="font-serif text-3xl sm:text-4xl font-bold text-ink tracking-tight">
+          Register your organization
+        </h1>
+        <p class="text-xs sm:text-sm text-ink-2 leading-relaxed">
+          Free for grassroots organizations. You’ll be the first admin — you can invite coordinators and verifiers later.
+        </p>
+      </div>
+
+      <!-- Notification Banner -->
+      <div id="errorBanner" class="hidden bg-red-50 border border-red-200 text-red-700 text-xs rounded-lg p-3.5 font-medium"></div>
+
+      <!-- Registration Form -->
+      <form id="ngoRegisterForm" class="space-y-5">
+        
+        <!-- Row 1: Full Name & Role -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="space-y-1.5">
+            <label for="fullName" class="block text-xs font-bold text-ink">Full name</label>
+            <input 
+              type="text" 
+              id="fullName" 
+              name="fullName" 
+              value="Grace Nakato" 
+              required
+              class="w-full bg-white border border-line rounded-lg px-4 py-3 text-sm text-ink focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest transition-all"
+            />
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="role" class="block text-xs font-bold text-ink">Your role</label>
+            <input 
+              type="text" 
+              id="role" 
+              name="role" 
+              value="Programme Lead" 
+              required
+              class="w-full bg-white border border-line rounded-lg px-4 py-3 text-sm text-ink focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest transition-all"
+            />
+          </div>
+        </div>
+
+        <!-- Work Email -->
+        <div class="space-y-1.5">
+          <label for="email" class="block text-xs font-bold text-ink">Work email</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            value="grace@ubuntuhealth.org" 
+            required
+            class="w-full bg-white border border-forest rounded-lg px-4 py-3 text-sm text-ink focus:outline-none focus:ring-1 focus:ring-forest transition-all"
+          />
+          <p class="text-[11px] text-ink-2">An email on your organization's domain speeds up verification.</p>
+        </div>
+
+        <!-- Phone (WhatsApp) with All Country Codes -->
+        <div class="space-y-1.5">
+          <label for="phone" class="block text-xs font-bold text-ink">Phone (WhatsApp)</label>
+          <div class="flex bg-white border border-line rounded-lg overflow-hidden focus-within:border-forest focus-within:ring-1 focus-within:ring-forest transition-all">
+            <select id="countryCode" name="countryCode" class="bg-paper/80 border-r border-line px-3 py-3 text-xs font-mono text-ink focus:outline-none cursor-pointer">
+              <option value="+1">🇺🇸 +1 (US/CA)</option>
+              <option value="+44">🇬🇧 +44 (UK)</option>
+              <option value="+234">🇳🇬 +234 (Nigeria)</option>
+              <option value="+254">🇰🇪 +254 (Kenya)</option>
+              <option value="+256" selected>🇺🇬 +256 (Uganda)</option>
+              <option value="+233">🇬🇭 +233 (Ghana)</option>
+              <option value="+27">🇿🇦 +27 (South Africa)</option>
+              <option value="+91">🇮🇳 +91 (India)</option>
+              <option value="+61">🇦🇺 +61 (Australia)</option>
+              <option value="+49">🇩🇪 +49 (Germany)</option>
+              <option value="+33">🇫🇷 +33 (France)</option>
+              <option value="+81">🇯🇵 +81 (Japan)</option>
+              <option value="+55">🇧🇷 +55 (Brazil)</option>
+              <option value="+52">🇲🇽 +52 (Mexico)</option>
+              <option value="+971">🇦🇪 +971 (UAE)</option>
+            </select>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              placeholder="772 104 388" 
+              value="772104388"
+              required
+              class="w-full px-4 py-3 text-sm text-ink focus:outline-none bg-transparent"
+            />
+          </div>
+        </div>
+
+        <!-- Password with Real-Time Strength Meter -->
+        <div class="space-y-2">
+          <label for="password" class="block text-xs font-bold text-ink">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            placeholder="At least 8 characters"
+            required
+            class="w-full bg-white border border-line rounded-lg px-4 py-3 text-sm text-ink focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest transition-all"
+          />
+          
+          <!-- Dynamic Password Strength Bars -->
+          <div class="grid grid-cols-4 gap-2 pt-1">
+            <div id="bar1" class="h-1 bg-line rounded-full transition-colors"></div>
+            <div id="bar2" class="h-1 bg-line rounded-full transition-colors"></div>
+            <div id="bar3" class="h-1 bg-line rounded-full transition-colors"></div>
+            <div id="bar4" class="h-1 bg-line rounded-full transition-colors"></div>
+          </div>
+          <span id="strengthText" class="text-xs font-semibold text-ink-2 block">Enter a secure password</span>
+        </div>
+
+        <!-- Footer Actions & Policy Agreement -->
+        <div class="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <p class="text-[11px] text-ink-2 max-w-xs leading-normal">
+            By continuing you agree to the <a href="#" class="underline hover:text-forest">Terms</a> and <a href="#" class="underline hover:text-forest">Data Protection Policy</a>.
+          </p>
+          
+          <button 
+            type="submit" 
+            id="submitBtn"
+            class="bg-forest text-paper font-bold px-8 py-3.5 rounded-lg text-sm hover:bg-forest-dark hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 active:translate-y-0 cursor-pointer self-end sm:self-auto"
+          >
+            Continue
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-6 border-t border-line bg-paper text-xs text-ink-2">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <div class="flex items-center gap-2">
+        <span class="font-serif text-sm font-bold text-forest">IMPACTRA</span>
+        <span>&copy; 2026 IMPACTRA Platform.</span>
+      </div>
+      <div class="flex gap-4 text-[11px]">
+        <a href="/index.html" class="hover:text-forest transition-colors cursor-pointer">Home</a>
+        <a href="/login.html" class="hover:text-forest transition-colors cursor-pointer">Sign in</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script logic for password strength & API submission -->
+  <script>
+    // Real-Time Password Strength Checker
+    const passwordInput = document.getElementById('password');
+    const strengthText = document.getElementById('strengthText');
+    const bars = [
+      document.getElementById('bar1'),
+      document.getElementById('bar2'),
+      document.getElementById('bar3'),
+      document.getElementById('bar4')
+    ];
+
+    passwordInput.addEventListener('input', (e) => {
+      const val = e.target.value;
+      let score = 0;
+
+      if (val.length >= 6) score++;
+      if (val.length >= 10) score++;
+      if (/[A-Z]/.test(val) && /[0-9]/.test(val)) score++;
+      if (/[^A-Za-z0-9]/.test(val)) score++;
+
+      // Reset bars
+      bars.forEach(bar => bar.className = 'h-1 bg-line rounded-full transition-colors');
+
+      if (val.length === 0) {
+        strengthText.textContent = 'Enter a secure password';
+        strengthText.className = 'text-xs font-semibold text-ink-2 block';
+        return;
+      }
+
+      if (score <= 1) {
+        bars[0].className = 'h-1 bg-red-500 rounded-full transition-colors';
+        strengthText.textContent = 'Weak';
+        strengthText.className = 'text-xs font-semibold text-red-600 block';
+      } else if (score === 2 || score === 3) {
+        for (let i = 0; i < 3; i++) bars[i].className = 'h-1 bg-amber-500 rounded-full transition-colors';
+        strengthText.textContent = 'Fair';
+        strengthText.className = 'text-xs font-semibold text-amber-600 block';
+      } else {
+        bars.forEach(bar => bar.className = 'h-1 bg-forest rounded-full transition-colors');
+        strengthText.textContent = 'Strong';
+        strengthText.className = 'text-xs font-semibold text-forest block';
+      }
+    });
+
+    // Form Submission Controller
+    document.getElementById('ngoRegisterForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const errorBanner = document.getElementById('errorBanner');
+      const submitBtn = document.getElementById('submitBtn');
+      
+      errorBanner.classList.add('hidden');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Processing...';
+
+      const payload = {
+        fullName: e.target.fullName.value,
+        role: e.target.role.value,
+        email: e.target.email.value,
+        phone: `${e.target.countryCode.value} ${e.target.phone.value}`,
+        password: e.target.password.value,
+        accountType: 'ngo'
+      };
+
+      try {
+        const response = await fetch('/api/auth/register-ngo', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          localStorage.setItem('impactra_temp_user', JSON.stringify(payload));
+          window.location.href = '/register-ngo-step2.html';
+        } else {
+          errorBanner.textContent = data.message || 'Registration failed. Please check your information.';
+          errorBanner.classList.remove('hidden');
+        }
+      } catch (err) {
+        // Fallback for direct preview navigation
+        window.location.href = '/app.html';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Continue';
+      }
+    });
+  </script>
+</body>
+</html>
