@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-paper">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Q3 Donor Report — Ubuntu Health Collective | IMPACTRA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: '#1E4034',
+            'forest-dark': '#152E25',
+            'forest-light': '#2A5243',
+            ink: '#162110',
+            paper: '#F5F4EE',
+            seal: '#A87824',
+            line: '#DDDBC1',
+            'ink-2': '#5E6E67',
+          },
+          fontFamily: {
+            serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+            sans: ['"Public Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #reportPreview, #reportPreview * {
+        visibility: visible;
+      }
+      #reportPreview {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 20px;
+        box-shadow: none;
+        border: none;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-full font-sans antialiased text-ink bg-paper flex flex-col lg:flex-row overflow-x-hidden selection:bg-forest selection:text-paper">
+
+  <!-- ========================================== -->
+  <!-- LEFT SIDEBAR: REPORT CONFIGURATION -->
+  <!-- ========================================== -->
+  <aside class="w-full lg:w-[420px] bg-paper border-r border-line p-6 lg:p-8 space-y-6 shrink-0 no-print overflow-y-auto">
+    
+    <!-- Breadcrumb & Title -->
+    <div class="space-y-1">
+      <a href="/reports.html" class="text-xs font-semibold text-ink-2 hover:text-ink transition-colors">
+        Reports <span class="mx-1">›</span>
+      </a>
+      <h1 class="font-serif text-2xl font-bold text-ink tracking-tight">
+        Q3 donor report
+      </h1>
+    </div>
+
+    <!-- Period Input -->
+    <div class="space-y-1.5">
+      <label class="block text-xs font-bold text-ink">Period</label>
+      <input 
+        type="text" 
+        value="1 Jul – 30 Sep 2026" 
+        class="w-full bg-white border border-line rounded-xl px-4 py-2.5 text-xs font-medium text-ink focus:outline-none focus:border-forest"
+      />
+    </div>
+
+    <!-- Prepared For Input -->
+    <div class="space-y-1.5">
+      <label class="block text-xs font-bold text-ink">Prepared for</label>
+      <input 
+        type="text" 
+        id="preparedForInput"
+        value="Kampala Health Fund" 
+        oninput="updateReportMeta()"
+        class="w-full bg-white border border-line rounded-xl px-4 py-2.5 text-xs font-medium text-ink focus:outline-none focus:border-forest"
+      />
+    </div>
+
+    <!-- Include Checkboxes -->
+    <div class="space-y-3 pt-2 border-t border-line">
+      <label class="block text-xs font-bold text-ink uppercase tracking-wider">Include</label>
+      
+      <div class="space-y-2.5 text-xs font-medium">
+        <label class="flex items-center gap-3 cursor-pointer">
+          <input type="checkbox" checked class="w-4 h-4 rounded text-forest focus:ring-forest border-line">
+          <span>Key figures</span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer">
+          <input type="checkbox" checked class="w-4 h-4 rounded text-forest focus:ring-forest border-line">
+          <span>Verified hours by month</span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer">
+          <input type="checkbox" checked class="w-4 h-4 rounded text-forest focus:ring-forest border-line">
+          <span>By programme</span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer">
+          <input type="checkbox" checked class="w-4 h-4 rounded text-forest focus:ring-forest border-line">
+          <span>Volunteers by gender</span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer">
+          <input type="checkbox" checked class="w-4 h-4 rounded text-forest focus:ring-forest border-line">
+          <span>Retention</span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer">
+          <input type="checkbox" id="volNamesToggle" onchange="toggleVolunteerNames(this)" class="w-4 h-4 rounded text-forest focus:ring-forest border-line">
+          <span>Volunteer names</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Narrative Note -->
+    <div class="space-y-1.5 pt-2 border-t border-line">
+      <label class="block text-xs font-bold text-ink">Narrative note</label>
+      <textarea 
+        id="narrativeInput"
+        rows="3" 
+        oninput="updateNarrative(this)"
+        class="w-full bg-white border border-line rounded-xl p-3.5 text-xs text-ink focus:outline-none focus:border-forest"
+      >Mobilization expanded to Bwaise in August; retention rose after moving briefings to WhatsApp.</textarea>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="space-y-3 pt-4 border-t border-line">
+      <button 
+        type="button" 
+        onclick="window.print()"
+        class="w-full bg-forest text-paper font-bold py-3 rounded-xl text-xs hover:bg-forest-dark transition-all cursor-pointer shadow-2xs flex items-center justify-center gap-2"
+      >
+        Export PDF
+      </button>
+      <button 
+        type="button" 
+        onclick="alert('Read-only donor report link copied to clipboard!');"
+        class="w-full bg-white border border-line text-ink font-bold py-3 rounded-xl text-xs hover:bg-paper transition-all cursor-pointer text-center"
+      >
+        Share read-only link with donor
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- ========================================== -->
+  <!-- RIGHT PREVIEW: PRINTABLE REPORT SHEET -->
+  <!-- ========================================== -->
+  <main class="flex-1 p-6 lg:p-12 flex justify-center bg-line/20 overflow-y-auto">
+    
+    <div id="reportPreview" class="bg-white border border-line rounded-2xl p-8 sm:p-12 max-w-3xl w-full shadow-sm space-y-8 my-auto">
+      
+      <!-- Report Header -->
+      <div class="flex items-start justify-between border-b border-line pb-6">
+        <div class="space-y-1">
+          <p class="text-[10px] font-mono uppercase tracking-widest text-ink-2">Impact Report · Q3 2026</p>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-ink">Ubuntu Health Collective</h2>
+          <p id="reportMetaSubtitle" class="text-xs text-ink-2">Prepared for Kampala Health Fund · 1 Jul – 30 Sep 2026</p>
+        </div>
+        <div class="w-16 h-16 border border-dashed border-line rounded-lg flex items-center justify-center text-[10px] font-mono text-ink-2 shrink-0">
+          logo
+        </div>
+      </div>
+
+      <!-- KPI Figures Row -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-2">
+        <div class="space-y-1">
+          <p class="font-serif text-2xl font-bold text-ink">3,482</p>
+          <p class="text-[11px] text-ink-2 leading-tight">verified volunteer hours</p>
+        </div>
+        <div class="space-y-1">
+          <p class="font-serif text-2xl font-bold text-ink">146</p>
+          <p class="text-[11px] text-ink-2 leading-tight">active volunteers (of 212 registered)</p>
+        </div>
+        <div class="space-y-1">
+          <p class="font-serif text-2xl font-bold text-ink">9,210</p>
+          <p class="text-[11px] text-ink-2 leading-tight">people reached</p>
+        </div>
+        <div class="space-y-1">
+          <p class="font-serif text-2xl font-bold text-ink">68%</p>
+          <p class="text-[11px] text-ink-2 leading-tight">volunteer retention</p>
+        </div>
+      </div>
+
+      <!-- Verified Hours by Month Chart Section -->
+      <div class="space-y-3 pt-4 border-t border-line">
+        <h3 class="text-xs font-bold font-mono uppercase tracking-wider text-ink">Verified hours by month</h3>
+        
+        <div class="h-44 flex items-end justify-between gap-3 pt-4">
+          <div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end">
+            <div class="w-full bg-emerald-800/40 rounded-t h-16"></div>
+            <span class="text-[10px] font-mono text-ink-2">Apr</span>
+          </div>
+          <div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end">
+            <div class="w-full bg-emerald-800/50 rounded-t h-20"></div>
+            <span class="text-[10px] font-mono text-ink-2">May</span>
+          </div>
+          <div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end">
+            <div class="w-full bg-emerald-800/65 rounded-t h-24"></div>
+            <span class="text-[10px] font-mono text-ink-2">Jun</span>
+          </div>
+          <div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end">
+            <div class="w-full bg-forest rounded-t h-32"></div>
+            <span class="text-[10px] font-mono text-ink-2">Jul</span>
+          </div>
+          <div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end">
+            <div class="w-full bg-forest rounded-t h-36"></div>
+            <span class="text-[10px] font-mono text-ink-2">Aug</span>
+          </div>
+          <div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end">
+            <div class="w-full bg-forest rounded-t h-40"></div>
+            <span class="text-[10px] font-mono text-ink-2">Sep</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- By Programme Table -->
+      <div class="space-y-3 pt-4 border-t border-line">
+        <h3 class="text-xs font-bold font-mono uppercase tracking-wider text-ink">By programme</h3>
+        
+        <table class="w-full text-left text-xs border-collapse">
+          <tbody class="divide-y divide-line">
+            <tr>
+              <td class="py-2.5 font-bold text-ink">HIV testing mobilization</td>
+              <td class="py-2.5 text-right font-mono text-ink-2">1,864 h</td>
+              <td class="py-2.5 text-right font-mono text-ink-2">72 vols</td>
+              <td class="py-2.5 text-right font-mono text-ink">6,420 reached</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 font-bold text-ink">Youth peer education</td>
+              <td class="py-2.5 text-right font-mono text-ink-2">1,012 h</td>
+              <td class="py-2.5 text-right font-mono text-ink-2">48 vols</td>
+              <td class="py-2.5 text-right font-mono text-ink">2,150 reached</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 font-bold text-ink">Clinic support desk</td>
+              <td class="py-2.5 text-right font-mono text-ink-2">606 h</td>
+              <td class="py-2.5 text-right font-mono text-ink-2">26 vols</td>
+              <td class="py-2.5 text-right font-mono text-ink">640 reached</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Gender & Retention Summary Text -->
+      <div class="text-xs text-ink leading-relaxed pt-2">
+        <p><strong>Active volunteers by gender:</strong> 88 women (60%), 55 men (38%), 3 not stated. <strong>Retention:</strong> 68% returned for 2+ shifts.</p>
+      </div>
+
+      <!-- Narrative Note Box -->
+      <div class="border-l-2 border-seal pl-4 py-1">
+        <p id="reportNarrativeDisplay" class="text-xs text-ink italic leading-relaxed">
+          "Mobilization expanded to Bwaise in August; retention rose after moving briefings to WhatsApp."
+        </p>
+      </div>
+
+      <!-- Report Footer & QR Code -->
+      <div class="flex items-end justify-between pt-6 border-t border-line text-[11px] font-mono text-ink-2">
+        <div>
+          <p>Built from 1,284 verified entries only · RPT-UHC-Q3-26</p>
+          <p class="mt-0.5">Verify: impactra.org/r/UHCQ326</p>
+        </div>
+        <div class="w-12 h-12 bg-ink text-paper flex items-center justify-center font-bold text-xs rounded">
+          QR
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Interactive JS for Live Preview Updating -->
+  <script>
+    function updateReportMeta() {
+      const fund = document.getElementById('preparedForInput').value || 'Kampala Health Fund';
+      document.getElementById('reportMetaSubtitle').textContent = `Prepared for ${fund} · 1 Jul – 30 Sep 2026`;
+    }
+
+    function updateNarrative(textarea) {
+      document.getElementById('reportNarrativeDisplay').textContent = `"${textarea.value}"`;
+    }
+
+    function toggleVolunteerNames(checkbox) {
+      // Optional toggle behavior if volunteer names list is enabled
+    }
+  </script>
+</body>
+</html>
