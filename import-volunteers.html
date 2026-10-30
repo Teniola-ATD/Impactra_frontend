@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-paper">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Import volunteers & past hours — Step 2: Map columns | IMPACTRA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: '#1E4034',
+            'forest-dark': '#152E25',
+            ink: '#162110',
+            paper: '#F5F4EE',
+            seal: '#A87824',
+            line: '#DDDBC1',
+            'ink-2': '#5E6E67',
+          },
+          fontFamily: {
+            serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+            sans: ['"Public Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="h-full font-sans antialiased text-ink bg-paper flex flex-col justify-between selection:bg-forest selection:text-paper">
+
+  <!-- ========================================== -->
+  <!-- TOP WIZARD NAVIGATION HEADER -->
+  <!-- ========================================== -->
+  <header class="bg-paper border-b border-line sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Close Action & Flow Title -->
+      <div class="flex items-center gap-4">
+        <a href="/health.html" class="text-xs font-semibold text-ink-2 hover:text-ink flex items-center gap-1.5 transition-colors cursor-pointer">
+          <span class="text-sm">✕</span> Close
+        </a>
+        <div class="h-4 w-px bg-line hidden sm:block"></div>
+        <h1 class="text-sm font-bold text-ink hidden sm:block">
+          Import volunteers & past hours
+        </h1>
+      </div>
+
+      <!-- 3-Step Wizard Tracker -->
+      <div class="flex items-center gap-5 text-xs font-medium">
+        <!-- Step 1: Upload -->
+        <a href="#" class="flex items-center gap-1 text-forest font-bold hover:underline">
+          <span class="text-xs">✓</span> Upload
+        </a>
+        
+        <!-- Step 2: Map columns (Active) -->
+        <div class="flex items-center gap-1 text-ink font-bold border-b-2 border-ink pb-0.5">
+          <span>2 Map columns</span>
+        </div>
+
+        <!-- Step 3: Review -->
+        <div class="flex items-center gap-1 text-ink-2">
+          <span>3 Review</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- MAIN WORKSPACE CONTAINER -->
+  <!-- ========================================== -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-8 py-8">
+    <form id="mapColumnsForm" class="space-y-8">
+      
+      <!-- 2-Column Precise Ratios -->
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start">
+        
+        <!-- LEFT COLUMN: FIELD MAPPING TABLE -->
+        <div class="bg-white border border-line rounded-2xl overflow-hidden shadow-2xs">
+          
+          <!-- File Summary Bar -->
+          <div class="p-4 sm:px-6 sm:py-4 border-b border-line bg-paper/30 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="px-2 py-0.5 bg-paper border border-line text-[10px] font-mono font-bold text-ink-2 rounded uppercase">CSV</span>
+              <span class="font-bold text-sm text-ink font-mono">Kawempe_volunteers_2026.csv</span>
+            </div>
+            <span class="text-xs font-mono text-ink-2">214 rows · 7 columns</span>
+          </div>
+
+          <!-- Mapping Table -->
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="border-b border-line text-[10px] font-mono uppercase text-ink-2 bg-paper/10">
+                  <th class="py-3 px-4 sm:px-6 font-bold tracking-wider w-1/4">YOUR COLUMN</th>
+                  <th class="py-3 px-4 sm:px-6 font-bold tracking-wider w-1/4">EXAMPLE</th>
+                  <th class="py-3 px-4 sm:px-6 font-bold tracking-wider w-1/3">IMPACTRA FIELD</th>
+                  <th class="py-3 px-4 sm:px-6 font-bold tracking-wider">STATUS</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-line font-medium">
+                
+                <!-- Row 1: Full Name -->
+                <tr class="hover:bg-paper/20 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-mono text-ink">Full Name</td>
+                  <td class="py-3.5 px-4 sm:px-6 text-ink-2">Joseph Okello</td>
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="flex items-center gap-2">
+                      <span class="text-ink-2 font-mono">→</span>
+                      <select name="field_fullname" class="bg-paper/50 border border-line rounded-lg px-3 py-2 text-xs font-semibold text-ink focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest cursor-pointer w-44">
+                        <option value="name" selected>Volunteer name</option>
+                        <option value="phone">Phone</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td class="py-3.5 px-4 sm:px-6 font-bold text-forest">Matched</td>
+                </tr>
+
+                <!-- Row 2: Tel -->
+                <tr class="hover:bg-paper/20 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-mono text-ink">Tel</td>
+                  <td class="py-3.5 px-4 sm:px-6 text-ink-2 font-mono">0772 104 388</td>
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="flex items-center gap-2">
+                      <span class="text-ink-2 font-mono">→</span>
+                      <select name="field_tel" class="bg-paper/50 border border-line rounded-lg px-3 py-2 text-xs font-semibold text-ink focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest cursor-pointer w-44">
+                        <option value="phone" selected>Phone</option>
+                        <option value="name">Volunteer name</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td class="py-3.5 px-4 sm:px-6 font-bold text-forest">Matched</td>
+                </tr>
+
+                <!-- Row 3: Sex -->
+                <tr class="hover:bg-paper/20 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-mono text-ink">Sex</td>
+                  <td class="py-3.5 px-4 sm:px-6 text-ink-2">M</td>
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="flex items-center gap-2">
+                      <span class="text-ink-2 font-mono">→</span>
+                      <select name="field_sex" class="bg-paper/50 border border-line rounded-lg px-3 py-2 text-xs font-semibold text-ink focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest cursor-pointer w-44">
+                        <option value="gender" selected>Gender</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td class="py-3.5 px-4 sm:px-6 font-bold text-forest">Matched</td>
+                </tr>
+
+                <!-- Row 4: Date -->
+                <tr class="hover:bg-paper/20 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-mono text-ink">Date</td>
+                  <td class="py-3.5 px-4 sm:px-6 text-ink-2 font-mono">14/08/2026</td>
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="flex items-center gap-2">
+                      <span class="text-ink-2 font-mono">→</span>
+                      <select name="field_date" class="bg-paper/50 border border-line rounded-lg px-3 py-2 text-xs font-semibold text-ink focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest cursor-pointer w-44">
+                        <option value="activity_date" selected>Activity date</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td class="py-3.5 px-4 sm:px-6 font-bold text-amber-700">Format DD/MM</td>
+                </tr>
+
+                <!-- Row 5: Hrs -->
+                <tr class="hover:bg-paper/20 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-mono text-ink">Hrs</td>
+                  <td class="py-3.5 px-4 sm:px-6 text-ink-2 font-mono">4</td>
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="flex items-center gap-2">
+                      <span class="text-ink-2 font-mono">→</span>
+                      <select name="field_hrs" class="bg-paper/50 border border-line rounded-lg px-3 py-2 text-xs font-semibold text-ink focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest cursor-pointer w-44">
+                        <option value="hours" selected>Hours</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td class="py-3.5 px-4 sm:px-6 font-bold text-forest">Matched</td>
+                </tr>
+
+                <!-- Row 6: Site -->
+                <tr class="hover:bg-paper/20 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-mono text-ink">Site</td>
+                  <td class="py-3.5 px-4 sm:px-6 text-ink-2">Kawempe mkt</td>
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="flex items-center gap-2">
+                      <span class="text-ink-2 font-mono">→</span>
+                      <select name="field_site" class="bg-paper/50 border border-line rounded-lg px-3 py-2 text-xs font-semibold text-ink focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest cursor-pointer w-44">
+                        <option value="location" selected>Location</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td class="py-3.5 px-4 sm:px-6 font-bold text-forest">Matched</td>
+                </tr>
+
+                <!-- Row 7: Reached -->
+                <tr class="hover:bg-paper/20 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-mono text-ink">Reached</td>
+                  <td class="py-3.5 px-4 sm:px-6 text-ink-2 font-mono">15</td>
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="flex items-center gap-2">
+                      <span class="text-ink-2 font-mono">→</span>
+                      <select name="field_reached" class="bg-paper/50 border border-line rounded-lg px-3 py-2 text-xs font-semibold text-ink focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest cursor-pointer w-44">
+                        <option value="people_reached" selected>People reached</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td class="py-3.5 px-4 sm:px-6 font-bold text-forest">Matched</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: SIDE SUMMARY CARDS -->
+        <div class="space-y-4">
+          
+          <!-- Checklist Card -->
+          <div class="bg-white border border-line rounded-2xl p-5 space-y-3 shadow-2xs">
+            <h2 class="font-bold text-sm text-ink">Before you import</h2>
+            <ul class="space-y-2 text-xs">
+              <li class="flex items-start gap-2 text-forest font-bold">
+                <span>✓</span>
+                <span>198 rows ready</span>
+              </li>
+              <li class="flex items-start gap-2 text-amber-800 font-medium">
+                <span class="text-amber-600">◐</span>
+                <span>12 rows missing a phone number</span>
+              </li>
+              <li class="flex items-start gap-2 text-red-700 font-medium">
+                <span>✕</span>
+                <span>4 duplicate name + date rows — will be skipped</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Pending Hours Warning Card -->
+          <div class="bg-amber-100/60 border border-amber-300/60 rounded-2xl p-5 space-y-1 shadow-2xs">
+            <p class="text-xs font-bold text-ink">
+              Imported hours arrive as “Pending”.
+            </p>
+            <p class="text-xs text-ink-2 leading-relaxed">
+              They only count once a verifier confirms them — the same rule as hours logged in the app.
+            </p>
+          </div>
+
+          <!-- SMS Notice Card -->
+          <div class="bg-white border border-line rounded-2xl p-5 text-xs text-ink-2 leading-relaxed shadow-2xs">
+            Volunteers get an SMS invite to claim their record. Nothing is public until they do.
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- FOOTER SUBMIT BUTTON -->
+      <div class="pt-4 flex justify-end">
+        <button 
+          type="submit" 
+          id="submitBtn"
+          class="bg-forest text-paper font-bold px-8 py-3.5 rounded-xl text-sm hover:bg-forest-dark hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 active:translate-y-0 cursor-pointer text-center"
+        >
+          Review 198 records
+        </button>
+      </div>
+
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-6 border-t border-line bg-paper text-xs text-ink-2">
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <div class="flex items-center gap-2">
+        <span class="font-serif text-sm font-bold text-forest">IMPACTRA</span>
+        <span>&copy; 2026 IMPACTRA Platform.</span>
+      </div>
+      <div class="flex gap-4 text-[11px]">
+        <a href="/health.html" class="hover:text-forest transition-colors cursor-pointer">Dashboard</a>
+        <a href="/opportunity.html" class="hover:text-forest transition-colors cursor-pointer">Opportunities</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('mapColumnsForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Processing 198 records...';
+      setTimeout(() => {
+        window.location.href = '/application.html';
+      }, 600);
+    });
+  </script>
+</body>
+</html>

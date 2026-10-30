@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Your Organization — Step 2 | IMPACTRA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: '#1E4034',
+            'forest-dark': '#152E25',
+            ink: '#162110',
+            paper: '#F5F4EE',
+            seal: '#A87824',
+            line: '#DDDBC1',
+            'ink-2': '#5E6E67',
+          },
+          fontFamily: {
+            serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+            sans: ['"Public Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="h-full font-sans antialiased bg-paper text-ink selection:bg-forest selection:text-paper flex flex-col justify-between">
+
+  <!-- Header with 3-Step Progress Tracker -->
+  <header class="bg-paper border-b border-line sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="/index.html" class="flex items-center gap-2 font-serif text-lg font-bold tracking-widest text-ink uppercase hover:opacity-90 transition-opacity">
+        <div class="w-6 h-6 rounded bg-forest text-paper flex items-center justify-center text-xs font-bold">
+          ✓
+        </div>
+        <span>IMPACTRA</span>
+      </a>
+
+      <!-- Stepper Progress Bar -->
+      <div class="hidden md:flex items-center gap-6 text-xs font-medium">
+        <!-- Step 1: Completed -->
+        <a href="/register-ngo.html" class="flex items-center gap-2 text-forest font-semibold hover:underline">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-forest flex items-center justify-center text-xs font-bold">✓</span>
+          <span>Your account</span>
+        </a>
+        
+        <!-- Step 2: Active -->
+        <div class="flex items-center gap-2 text-ink font-bold">
+          <span class="w-6 h-6 rounded-full bg-forest text-paper flex items-center justify-center text-xs">2</span>
+          <span>Organization</span>
+        </div>
+
+        <!-- Step 3: Pending -->
+        <div class="flex items-center gap-2 text-ink-2">
+          <span class="w-6 h-6 rounded-full border border-line bg-white flex items-center justify-center text-xs text-ink-2">3</span>
+          <span>Verification</span>
+        </div>
+      </div>
+
+      <!-- Save Status -->
+      <div class="text-xs text-ink-2 font-mono">
+        Saved
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-8 my-4">
+    <form id="orgStep2Form" class="space-y-8">
+      
+      <!-- 2-Column Responsive Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-start">
+        
+        <!-- LEFT COLUMN: ORGANIZATION DETAILS -->
+        <div class="space-y-6">
+          <h1 class="font-serif text-3xl sm:text-4xl font-bold text-ink tracking-tight">
+            About your organization
+          </h1>
+
+          <!-- Organization Name -->
+          <div class="space-y-1.5">
+            <label for="orgName" class="block text-xs font-bold text-ink">Organization name</label>
+            <input 
+              type="text" 
+              id="orgName" 
+              name="orgName" 
+              value="Ubuntu Health Collective" 
+              required
+              class="w-full bg-white border border-line rounded-lg px-4 py-3 text-sm text-ink focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest transition-all"
+            />
+          </div>
+
+          <!-- Category & City, Country -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Category Dropdown -->
+            <div class="space-y-1.5">
+              <label for="category" class="block text-xs font-bold text-ink">Category</label>
+              <select 
+                id="category" 
+                name="category" 
+                class="w-full bg-white border border-line rounded-lg px-4 py-3 text-sm text-ink focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest transition-all cursor-pointer"
+              >
+                <option value="Health" selected>Health</option>
+                <option value="Education">Education</option>
+                <option value="Community Support">Community Support</option>
+                <option value="Environment">Environment</option>
+                <option value="Skills Training">Skills Training</option>
+              </select>
+            </div>
+
+            <!-- City, Country -->
+            <div class="space-y-1.5">
+              <label for="location" class="block text-xs font-bold text-ink">City, country</label>
+              <input 
+                type="text" 
+                id="location" 
+                name="location" 
+                value="Kampala, Uganda" 
+                required
+                class="w-full bg-white border border-line rounded-lg px-4 py-3 text-sm text-ink focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest transition-all"
+              />
+            </div>
+          </div>
+
+          <!-- What you do (Description) -->
+          <div class="space-y-1.5">
+            <label for="description" class="block text-xs font-bold text-ink">
+              What you do <span class="text-ink-2 font-normal">· shown on your public profile</span>
+            </label>
+            <textarea 
+              id="description" 
+              name="description" 
+              rows="3" 
+              required
+              class="w-full bg-white border border-forest rounded-lg p-4 text-sm text-ink focus:outline-none focus:ring-1 focus:ring-forest transition-all"
+            >Community HIV awareness, testing mobilization and clinic support across Kawempe and Nakawa divisions.</textarea>
+          </div>
+
+          <!-- Sensitive Beneficiary Data Toggle -->
+          <div class="space-y-2 pt-2">
+            <label class="block text-xs font-bold text-ink">
+              Does your work involve sensitive beneficiary data?
+            </label>
+            <div class="flex items-center gap-2">
+              <button 
+                type="button" 
+                id="sensitiveYesBtn" 
+                onclick="setSensitive(true)"
+                class="px-5 py-2 rounded-lg text-xs font-bold transition-all bg-forest text-paper shadow-xs"
+              >
+                Yes
+              </button>
+              <button 
+                type="button" 
+                id="sensitiveNoBtn" 
+                onclick="setSensitive(false)"
+                class="px-5 py-2 rounded-lg text-xs font-bold transition-all bg-white border border-line text-ink hover:bg-paper"
+              >
+                No
+              </button>
+            </div>
+            <p class="text-[11px] text-ink-2">
+              We'll switch on stricter evidence rules — e.g. warn volunteers not to photograph clients.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: MANAGEMENT SETUP SELECTION -->
+        <div class="space-y-4 lg:pt-12">
+          <div class="space-y-1">
+            <h2 class="text-sm font-bold text-ink">How do you manage volunteers today?</h2>
+            <p class="text-xs text-ink-2">We'll set up your workspace to match.</p>
+          </div>
+
+          <!-- Radio Option 1: Paper/WhatsApp -->
+          <label class="management-card block bg-white border-2 border-forest rounded-2xl p-5 cursor-pointer hover:shadow-sm transition-all relative">
+            <div class="flex items-start gap-4">
+              <input 
+                type="radio" 
+                name="managementStyle" 
+                value="paper_whatsapp" 
+                checked 
+                class="mt-1 w-4 h-4 text-forest accent-forest cursor-pointer"
+              />
+              <div class="space-y-1">
+                <p class="font-bold text-sm text-ink">Paper, WhatsApp, phone notes</p>
+                <p class="text-xs text-ink-2 leading-relaxed">
+                  Start fresh. We'll walk you through posting your first opportunity and inviting volunteers with a WhatsApp link.
+                </p>
+              </div>
+            </div>
+          </label>
+
+          <!-- Radio Option 2: Spreadsheets -->
+          <label class="management-card block bg-white border border-line rounded-2xl p-5 cursor-pointer hover:border-forest hover:shadow-sm transition-all relative">
+            <div class="flex items-start gap-4">
+              <input 
+                type="radio" 
+                name="managementStyle" 
+                value="spreadsheets" 
+                class="mt-1 w-4 h-4 text-forest accent-forest cursor-pointer"
+              />
+              <div class="space-y-1">
+                <p class="font-bold text-sm text-ink">Spreadsheets, forms or timesheet tools</p>
+                <p class="text-xs text-ink-2 leading-relaxed">
+                  Consolidate. Import existing volunteers and past hours from CSV or Google Sheets, then verify from one place.
+                </p>
+              </div>
+            </div>
+          </label>
+
+        </div>
+
+      </div>
+
+      <!-- FOOTER ACTIONS -->
+      <div class="pt-8 border-t border-line flex items-center justify-between">
+        <a 
+          href="/register-ngo.html" 
+          class="text-xs font-bold text-ink-2 hover:text-ink flex items-center gap-1 transition-colors cursor-pointer"
+        >
+          <span>←</span> Back
+        </a>
+
+        <button 
+          type="submit" 
+          id="submitBtn"
+          class="bg-forest text-paper font-bold px-8 py-3.5 rounded-lg text-sm hover:bg-forest-dark hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 active:translate-y-0 cursor-pointer"
+        >
+          Continue to verification
+        </button>
+      </div>
+
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-6 border-t border-line bg-paper text-xs text-ink-2">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <div class="flex items-center gap-2">
+        <span class="font-serif text-sm font-bold text-forest">IMPACTRA</span>
+        <span>&copy; 2026 IMPACTRA Platform.</span>
+      </div>
+      <div class="flex gap-4 text-[11px]">
+        <a href="/index.html" class="hover:text-forest transition-colors cursor-pointer">Home</a>
+        <a href="/login.html" class="hover:text-forest transition-colors cursor-pointer">Sign in</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script for Sensitive Toggle, Management Selection, and Backend Link -->
+  <script>
+    let isSensitiveData = true;
+
+    function setSensitive(val) {
+      isSensitiveData = val;
+      const yesBtn = document.getElementById('sensitiveYesBtn');
+      const noBtn = document.getElementById('sensitiveNoBtn');
+
+      if (val) {
+        yesBtn.className = 'px-5 py-2 rounded-lg text-xs font-bold transition-all bg-forest text-paper shadow-xs';
+        noBtn.className = 'px-5 py-2 rounded-lg text-xs font-bold transition-all bg-white border border-line text-ink hover:bg-paper';
+      } else {
+        noBtn.className = 'px-5 py-2 rounded-lg text-xs font-bold transition-all bg-forest text-paper shadow-xs';
+        yesBtn.className = 'px-5 py-2 rounded-lg text-xs font-bold transition-all bg-white border border-line text-ink hover:bg-paper';
+      }
+    }
+
+    // Radio card border highlighting
+    document.querySelectorAll('input[name="managementStyle"]').forEach(radio => {
+      radio.addEventListener('change', (e) => {
+        document.querySelectorAll('.management-card').forEach(card => {
+          card.classList.remove('border-2', 'border-forest');
+          card.classList.add('border', 'border-line');
+        });
+        e.target.closest('.management-card').classList.remove('border-line');
+        e.target.closest('.management-card').classList.add('border-2', 'border-forest');
+      });
+    });
+
+    // Form submission controller
+    document.getElementById('orgStep2Form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Saving...';
+
+      const payload = {
+        orgName: e.target.orgName.value,
+        category: e.target.category.value,
+        location: e.target.location.value,
+        description: e.target.description.value,
+        sensitiveData: isSensitiveData,
+        managementStyle: e.target.managementStyle.value
+      };
+
+      try {
+        const response = await fetch('/api/auth/register-ngo-step2', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+          window.location.href = '/register-ngo-step3.html';
+        } else {
+          window.location.href = '/register-ngo-step3.html';
+        }
+      } catch (err) {
+        // Direct to Step 3 for frontend preview
+        window.location.href = '/register-ngo-step3.html';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Continue to verification';
+      }
+    });
+  </script>
+</body>
+</html>

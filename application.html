@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-paper">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Applicants — Community HIV testing mobilizer | IMPACTRA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: '#1E4034',
+            'forest-dark': '#152E25',
+            'forest-light': '#2A5243',
+            ink: '#162110',
+            paper: '#F5F4EE',
+            seal: '#A87824',
+            line: '#DDDBC1',
+            'ink-2': '#5E6E67',
+          },
+          fontFamily: {
+            serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+            sans: ['"Public Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="h-full font-sans antialiased text-ink bg-paper flex flex-col md:flex-row overflow-x-hidden selection:bg-forest selection:text-paper">
+
+  <!-- ========================================== -->
+  <!-- MOBILE TOP HEADER BAR -->
+  <!-- ========================================== -->
+  <div class="md:hidden flex items-center justify-between px-4 py-3 bg-forest text-paper border-b border-forest-light z-30 sticky top-0">
+    <div class="flex items-center gap-2 font-serif text-base font-bold tracking-widest uppercase">
+      <div class="w-5 h-5 rounded bg-paper/10 border border-paper/20 flex items-center justify-center text-[10px] font-bold text-paper">✓</div>
+      <span>IMPACTRA</span>
+    </div>
+    <button id="mobileDrawerBtn" class="p-2 text-paper/80 hover:text-paper rounded-lg focus:bg-forest-light cursor-pointer">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- PERSISTENT DARK FOREST SIDEBAR -->
+  <!-- ========================================== -->
+  <aside id="sidebar" class="fixed md:static inset-y-0 left-0 transform -translate-x-full md:translate-x-0 w-64 bg-forest text-paper flex flex-col justify-between z-40 transition-transform duration-200 ease-in-out shrink-0">
+    <div class="p-6 space-y-8 overflow-y-auto">
+      
+      <!-- Brand Logo -->
+      <a href="/index.html" class="flex items-center gap-2 font-serif text-lg font-bold tracking-widest text-paper uppercase hover:opacity-90 transition-opacity">
+        <div class="w-6 h-6 rounded bg-paper/10 border border-paper/20 flex items-center justify-center text-xs font-bold text-paper">✓</div>
+        <span>IMPACTRA</span>
+      </a>
+
+      <!-- Organization Status Badge -->
+      <div class="bg-forest-light/60 border border-paper/15 rounded-xl p-3.5 space-y-1">
+        <p class="font-bold text-xs text-paper truncate">Ubuntu Health Collective</p>
+        <p class="text-[11px] text-emerald-300 font-medium flex items-center gap-1.5">
+          <span>✓</span>
+          <span>Verified org · Kampala</span>
+        </p>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="space-y-1 text-xs font-medium">
+        <!-- Overview -->
+        <a href="/health.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-lg text-paper/70 hover:text-paper hover:bg-forest-light/40 cursor-pointer transition-colors">
+          <div class="flex items-center gap-3">
+            <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+            <span>Overview</span>
+          </div>
+        </a>
+
+        <!-- Opportunities -->
+        <a href="/opportunity.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-lg text-paper/70 hover:text-paper hover:bg-forest-light/40 cursor-pointer transition-colors">
+          <div class="flex items-center gap-3">
+            <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span>Opportunities</span>
+          </div>
+          <span class="text-[11px] font-mono text-paper/60">5</span>
+        </a>
+
+        <!-- Applicants (Active) -->
+        <a href="/application.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-lg bg-paper/15 text-paper font-bold cursor-pointer transition-colors">
+          <div class="flex items-center gap-3">
+            <svg class="w-4 h-4 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <span>Applicants</span>
+          </div>
+          <span class="text-[11px] font-mono text-paper/90 font-bold">9</span>
+        </a>
+
+        <!-- Verification -->
+        <a href="/verification.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-lg text-paper/70 hover:text-paper hover:bg-forest-light/40 cursor-pointer transition-colors">
+          <div class="flex items-center gap-3">
+            <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            <span>Verification</span>
+          </div>
+          <span class="text-[11px] font-mono text-paper/60">12</span>
+        </a>
+
+        <!-- Certificates -->
+        <a href="/certificates.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-lg text-paper/70 hover:text-paper hover:bg-forest-light/40 cursor-pointer transition-colors">
+          <div class="flex items-center gap-3">
+            <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <span>Certificates</span>
+          </div>
+        </a>
+
+        <!-- Reports -->
+        <a href="/reports.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-lg text-paper/70 hover:text-paper hover:bg-forest-light/40 cursor-pointer transition-colors">
+          <div class="flex items-center gap-3">
+            <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 012-2h2a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            <span>Reports</span>
+          </div>
+        </a>
+
+        <!-- Team -->
+        <a href="/teams.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-lg text-paper/70 hover:text-paper hover:bg-forest-light/40 cursor-pointer transition-colors">
+          <div class="flex items-center gap-3">
+            <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            <span>Team</span>
+          </div>
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Mobile Drawer Backdrop -->
+  <div id="sidebarBackdrop" class="fixed inset-0 bg-ink/50 backdrop-blur-xs z-30 hidden md:hidden"></div>
+
+  <!-- ========================================== -->
+  <!-- MAIN WORKSPACE -->
+  <!-- ========================================== -->
+  <main class="flex-1 p-4 sm:p-8 lg:p-10 max-w-7xl mx-auto space-y-6 w-full">
+    
+    <!-- Top Header Bar with Opportunity Title & Capacity -->
+    <div class="space-y-4 border-b border-line pb-5">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        <div class="space-y-1">
+          <p class="text-xs text-ink-2 font-medium">Applicants <span class="mx-1">›</span></p>
+          <h1 class="font-serif text-2xl sm:text-3xl font-bold text-ink tracking-tight">
+            Community HIV testing mobilizer
+          </h1>
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center gap-3 bg-white border border-line px-4 py-2.5 rounded-xl shadow-2xs">
+          <span class="text-xs font-bold text-ink-2">Spots filled</span>
+          <div class="flex items-center gap-3">
+            <div class="w-32 bg-paper rounded-full h-2 overflow-hidden border border-line">
+              <div class="bg-forest h-full rounded-full" style="width: 70%;"></div>
+            </div>
+            <span class="text-xs font-bold font-mono text-ink">14 of 20</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter Tabs Bar -->
+      <div class="flex items-center gap-6 text-xs font-bold pt-2">
+        <button class="text-ink border-b-2 border-ink pb-2 cursor-pointer flex items-center gap-1.5">
+          <span>New</span>
+          <span class="bg-ink text-paper px-1.5 py-0.5 rounded-full text-[10px]">9</span>
+        </button>
+        <button class="text-ink-2 hover:text-ink pb-2 cursor-pointer flex items-center gap-1.5">
+          <span>Approved</span>
+          <span class="bg-line text-ink px-1.5 py-0.5 rounded-full text-[10px]">14</span>
+        </button>
+        <button class="text-ink-2 hover:text-ink pb-2 cursor-pointer flex items-center gap-1.5">
+          <span>Declined</span>
+          <span class="bg-line text-ink px-1.5 py-0.5 rounded-full text-[10px]">4</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main 2-Column Section: Table & Detail Inspector -->
+    <div class="grid grid-cols-1 xl:grid-cols-[1fr_380px] gap-8 items-start">
+      
+      <!-- LEFT COLUMN: APPLICANTS TABLE -->
+      <div class="bg-white border border-line rounded-2xl overflow-hidden shadow-2xs">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="border-b border-line text-[10px] font-mono uppercase text-ink-2 bg-paper/20">
+                <th class="py-3.5 px-4 sm:px-6 font-bold tracking-wider">APPLICANT</th>
+                <th class="py-3.5 px-4 sm:px-6 font-bold tracking-wider">LANGUAGES</th>
+                <th class="py-3.5 px-4 sm:px-6 font-bold tracking-wider">PRIOR EXPERIENCE</th>
+                <th class="py-3.5 px-4 sm:px-6 font-bold tracking-wider">AVAILABILITY</th>
+                <th class="py-3.5 px-4 sm:px-6 font-bold tracking-wider text-right">ACTION</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-line font-medium">
+              
+              <!-- Applicant 1: Joseph Okello (Selected Active State) -->
+              <tr class="bg-paper/50 border-l-4 border-l-forest transition-colors">
+                <td class="py-4 px-4 sm:px-6">
+                  <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-forest text-paper font-serif font-bold flex items-center justify-center text-xs shrink-0">JO</div>
+                    <div>
+                      <p class="font-bold text-sm text-ink">Joseph Okello</p>
+                      <p class="text-[11px] text-ink-2">Kawempe · 22 verified h</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-4 px-4 sm:px-6 text-ink">Luganda, English</td>
+                <td class="py-4 px-4 sm:px-6 text-ink-2">Peer outreach · 2 mo</td>
+                <td class="py-4 px-4 sm:px-6 text-ink">All 4 Sats</td>
+                <td class="py-4 px-4 sm:px-6 text-right">
+                  <div class="flex items-center justify-end gap-2">
+                    <button onclick="alert('Declined Joseph Okello');" class="px-3 py-1.5 bg-white border border-line text-ink font-bold rounded-lg text-xs hover:bg-paper cursor-pointer">Decline</button>
+                    <button onclick="alert('Approved Joseph Okello');" class="px-3 py-1.5 bg-forest text-paper font-bold rounded-lg text-xs hover:bg-forest-dark cursor-pointer shadow-2xs">Approve</button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Applicant 2: Nakitende Aisha -->
+              <tr class="hover:bg-paper/30 transition-colors">
+                <td class="py-4 px-4 sm:px-6">
+                  <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-paper border border-line text-ink font-serif font-bold flex items-center justify-center text-xs shrink-0">NA</div>
+                    <div>
+                      <p class="font-bold text-sm text-ink">Nakitende Aisha</p>
+                      <p class="text-[11px] text-ink-2">Kawempe · New</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-4 px-4 sm:px-6 text-ink">Luganda, Swahili</td>
+                <td class="py-4 px-4 sm:px-6 text-ink-2">None</td>
+                <td class="py-4 px-4 sm:px-6 text-ink">3 of 4 Sats</td>
+                <td class="py-4 px-4 sm:px-6 text-right">
+                  <div class="flex items-center justify-end gap-2">
+                    <button onclick="alert('Declined Nakitende Aisha');" class="px-3 py-1.5 bg-white border border-line text-ink font-bold rounded-lg text-xs hover:bg-paper cursor-pointer">Decline</button>
+                    <button onclick="alert('Approved Nakitende Aisha');" class="px-3 py-1.5 bg-forest text-paper font-bold rounded-lg text-xs hover:bg-forest-dark cursor-pointer shadow-2xs">Approve</button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Applicant 3: Peter Mugisha -->
+              <tr class="hover:bg-paper/30 transition-colors">
+                <td class="py-4 px-4 sm:px-6">
+                  <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-paper border border-line text-ink font-serif font-bold flex items-center justify-center text-xs shrink-0">PM</div>
+                    <div>
+                      <p class="font-bold text-sm text-ink">Peter Mugisha</p>
+                      <p class="text-[11px] text-ink-2">Makindye · 64 verified h</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-4 px-4 sm:px-6 text-ink">English, Runyankole</td>
+                <td class="py-4 px-4 sm:px-6 text-ink-2">Clinic volunteer</td>
+                <td class="py-4 px-4 sm:px-6 text-ink">All 4 Sats</td>
+                <td class="py-4 px-4 sm:px-6 text-right">
+                  <div class="flex items-center justify-end gap-2">
+                    <button class="px-3 py-1.5 bg-white border border-line text-ink font-bold rounded-lg text-xs hover:bg-paper cursor-pointer">Decline</button>
+                    <button class="px-3 py-1.5 bg-forest text-paper font-bold rounded-lg text-xs hover:bg-forest-dark cursor-pointer shadow-2xs">Approve</button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Applicant 4: Sarah Kyomuhendo -->
+              <tr class="hover:bg-paper/30 transition-colors">
+                <td class="py-4 px-4 sm:px-6">
+                  <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-paper border border-line text-ink font-serif font-bold flex items-center justify-center text-xs shrink-0">SK</div>
+                    <div>
+                      <p class="font-bold text-sm text-ink">Sarah Kyomuhendo</p>
+                      <p class="text-[11px] text-ink-2">Kawempe · 8 verified h</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-4 px-4 sm:px-6 text-ink">Luganda, English</td>
+                <td class="py-4 px-4 sm:px-6 text-ink-2">School health club</td>
+                <td class="py-4 px-4 sm:px-6 text-ink">2 of 4 Sats</td>
+                <td class="py-4 px-4 sm:px-6 text-right">
+                  <div class="flex items-center justify-end gap-2">
+                    <button class="px-3 py-1.5 bg-white border border-line text-ink font-bold rounded-lg text-xs hover:bg-paper cursor-pointer">Decline</button>
+                    <button class="px-3 py-1.5 bg-forest text-paper font-bold rounded-lg text-xs hover:bg-forest-dark cursor-pointer shadow-2xs">Approve</button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Applicant 5: Daniel Opio -->
+              <tr class="hover:bg-paper/30 transition-colors">
+                <td class="py-4 px-4 sm:px-6">
+                  <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-paper border border-line text-ink font-serif font-bold flex items-center justify-center text-xs shrink-0">DO</div>
+                    <div>
+                      <p class="font-bold text-sm text-ink">Daniel Opio</p>
+                      <p class="text-[11px] text-ink-2">Nakawa · New</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-4 px-4 sm:px-6 text-ink">English, Luo</td>
+                <td class="py-4 px-4 sm:px-6 text-ink-2">Red Cross youth</td>
+                <td class="py-4 px-4 sm:px-6 text-ink">All 4 Sats</td>
+                <td class="py-4 px-4 sm:px-6 text-right">
+                  <div class="flex items-center justify-end gap-2">
+                    <button class="px-3 py-1.5 bg-white border border-line text-ink font-bold rounded-lg text-xs hover:bg-paper cursor-pointer">Decline</button>
+                    <button class="px-3 py-1.5 bg-forest text-paper font-bold rounded-lg text-xs hover:bg-forest-dark cursor-pointer shadow-2xs">Approve</button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Applicant 6: Rehema Nansubuga -->
+              <tr class="hover:bg-paper/30 transition-colors">
+                <td class="py-4 px-4 sm:px-6">
+                  <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-paper border border-line text-ink font-serif font-bold flex items-center justify-center text-xs shrink-0">RN</div>
+                    <div>
+                      <p class="font-bold text-sm text-ink">Rehema Nansubuga</p>
+                      <p class="text-[11px] text-ink-2">Kawempe · 31 verified h</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-4 px-4 sm:px-6 text-ink">Luganda</td>
+                <td class="py-4 px-4 sm:px-6 text-ink-2">Community mobilizer</td>
+                <td class="py-4 px-4 sm:px-6 text-ink">All 4 Sats</td>
+                <td class="py-4 px-4 sm:px-6 text-right">
+                  <div class="flex items-center justify-end gap-2">
+                    <button class="px-3 py-1.5 bg-white border border-line text-ink font-bold rounded-lg text-xs hover:bg-paper cursor-pointer">Decline</button>
+                    <button class="px-3 py-1.5 bg-forest text-paper font-bold rounded-lg text-xs hover:bg-forest-dark cursor-pointer shadow-2xs">Approve</button>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: APPLICANT INSPECTOR CARD -->
+      <div class="bg-white border border-line rounded-2xl p-6 space-y-6 shadow-2xs sticky top-6">
+        
+        <!-- Applicant Profile Header -->
+        <div class="space-y-4 border-b border-line pb-5">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-forest text-paper font-serif font-bold text-sm flex items-center justify-center shrink-0">JO</div>
+            <div>
+              <h2 class="font-bold text-base text-ink">Joseph Okello</h2>
+              <p class="text-xs text-ink-2">Kawempe resident · Joined Aug 2026</p>
+            </div>
+          </div>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap items-center gap-2 text-xs">
+            <span class="bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-lg">✓ 22 verified h elsewhere</span>
+            <span class="bg-paper border border-line text-ink px-2.5 py-1 rounded-lg">Luganda · English</span>
+          </div>
+        </div>
+
+        <!-- Questionnaire Section -->
+        <div class="space-y-4 text-xs">
+          <div class="space-y-1">
+            <p class="font-bold text-ink">Why do you want to join this programme?</p>
+            <p class="text-ink-2 leading-relaxed">My cousin tested late. I know the boda stages and market people in Kawempe and they listen to me.</p>
+          </div>
+
+          <div class="space-y-1">
+            <p class="font-bold text-ink">Have you done HIV awareness work before?</p>
+            <p class="text-ink-2 leading-relaxed">Yes — 2 months peer outreach with a youth church group.</p>
+          </div>
+
+          <div class="space-y-1 pt-2 border-t border-line">
+            <p class="font-bold text-ink">Confidentiality agreement</p>
+            <p class="text-emerald-700 font-bold flex items-center gap-1.5 mt-0.5">
+              <span>✓</span>
+              <span>Signed in app · 18 Sep</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Notification Note & Actions -->
+        <div class="space-y-4 pt-2 border-t border-line">
+          <p class="text-[11px] text-ink-2 italic">
+            Joseph gets a notification either way, with your message.
+          </p>
+
+          <div class="grid grid-cols-2 gap-3">
+            <button type="button" onclick="alert('Declined applicant');" class="bg-white border border-line text-ink font-bold py-2.5 rounded-xl text-xs hover:bg-paper cursor-pointer text-center">
+              Decline
+            </button>
+            <button type="button" onclick="alert('Approved & brief sent!'); window.location.href='/health.html';" class="bg-forest text-paper font-bold py-2.5 rounded-xl text-xs hover:bg-forest-dark cursor-pointer text-center shadow-2xs">
+              Approve & send brief
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Mobile Drawer Script -->
+  <script>
+    const mobileDrawerBtn = document.getElementById('mobileDrawerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+
+    mobileDrawerBtn.addEventListener('click', () => {
+      sidebar.classList.remove('-translate-x-full');
+      sidebarBackdrop.classList.remove('hidden');
+    });
+
+    sidebarBackdrop.addEventListener('click', () => {
+      sidebar.classList.add('-translate-x-full');
+      sidebarBackdrop.classList.add('hidden');
+    });
+  </script>
+</body>
+</html>

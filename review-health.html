@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-paper">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview — Ubuntu Health Collective | IMPACTRA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: '#1E4034',
+            'forest-dark': '#152E25',
+            'forest-light': '#2A5243',
+            ink: '#162110',
+            paper: '#F5F4EE',
+            seal: '#A87824',
+            line: '#DDDBC1',
+            'ink-2': '#5E6E67',
+          },
+          fontFamily: {
+            serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+            sans: ['"Public Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="h-full font-sans antialiased text-ink bg-paper flex flex-col md:flex-row overflow-x-hidden selection:bg-forest selection:text-paper">
+
+  <!-- ========================================== -->
+  <!-- MOBILE TOP HEADER BAR -->
+  <!-- ========================================== -->
+  <div class="md:hidden flex items-center justify-between px-4 py-3 bg-forest text-paper border-b border-forest-light z-30 sticky top-0">
+    <div class="flex items-center gap-2 font-serif text-base font-bold tracking-widest uppercase">
+      <div class="w-5 h-5 rounded bg-paper/10 border border-paper/20 flex items-center justify-center text-[10px] font-bold text-paper">✓</div>
+      <span>IMPACTRA</span>
+    </div>
+    <button id="mobileDrawerBtn" class="p-2 text-paper/80 hover:text-paper rounded-lg focus:bg-forest-light cursor-pointer">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- PERSISTENT DARK FOREST SIDEBAR -->
+  <!-- ========================================== -->
+  <aside id="sidebar" class="fixed md:static inset-y-0 left-0 transform -translate-x-full md:translate-x-0 w-64 bg-forest text-paper flex flex-col justify-between z-40 transition-transform duration-200 ease-in-out shrink-0">
+    <div class="p-6 space-y-8 overflow-y-auto">
+      
+      <!-- Brand Logo -->
+      <a href="/index.html" class="flex items-center gap-2 font-serif text-lg font-bold tracking-widest text-paper uppercase hover:opacity-90 transition-opacity">
+        <div class="w-6 h-6 rounded bg-paper/10 border border-paper/20 flex items-center justify-center text-xs font-bold text-paper">✓</div>
+        <span>IMPACTRA</span>
+      </a>
+
+      <!-- Organization Status Badge -->
+      <div class="bg-forest-light/60 border border-paper/15 rounded-xl p-3.5 space-y-1">
+        <p class="font-bold text-xs text-paper truncate">Ubuntu Health Collective</p>
+        <p class="text-[11px] text-amber-300/90 font-medium flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+          <span>Under review</span>
+        </p>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="space-y-1 text-xs font-medium">
+        <!-- Overview (Active) -->
+        <a href="/health.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg bg-paper/15 text-paper font-bold cursor-pointer transition-colors">
+          <svg class="w-4 h-4 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+          <span>Overview</span>
+        </a>
+
+        <!-- Opportunities -->
+        <a href="/opportunity.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-paper/70 hover:text-paper hover:bg-forest-light/40 cursor-pointer transition-colors">
+          <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span>Opportunities</span>
+        </a>
+
+        <!-- Applicants -->
+        <a href="/application.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-paper/70 hover:text-paper hover:bg-forest-light/40 cursor-pointer transition-colors">
+          <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <span>Applicants</span>
+        </a>
+
+        <!-- Verification -->
+        <a href="/verification.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-paper/70 hover:text-paper hover:bg-forest-light/40 cursor-pointer transition-colors">
+          <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <span>Verification</span>
+        </a>
+
+        <!-- Certificates -->
+        <a href="/certificates.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-paper/70 hover:text-paper hover:bg-forest-light/40 cursor-pointer transition-colors">
+          <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          <span>Certificates</span>
+        </a>
+
+        <!-- Reports -->
+        <a href="/reports.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-paper/70 hover:text-paper hover:bg-forest-light/40 cursor-pointer transition-colors">
+          <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 012-2h2a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          <span>Reports</span>
+        </a>
+
+        <!-- Teams -->
+        <a href="/teams.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-paper/70 hover:text-paper hover:bg-forest-light/40 cursor-pointer transition-colors">
+          <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          <span>Teams</span>
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Mobile Drawer Backdrop -->
+  <div id="sidebarBackdrop" class="fixed inset-0 bg-ink/50 backdrop-blur-xs z-30 hidden md:hidden"></div>
+
+  <!-- ========================================== -->
+  <!-- MAIN WORKSPACE -->
+  <!-- ========================================== -->
+  <main class="flex-1 p-4 sm:p-8 lg:p-12 max-w-6xl mx-auto space-y-8 w-full">
+    
+    <!-- Pending Review Status Banner -->
+    <div class="bg-amber-100/60 border border-amber-300/60 rounded-2xl p-5 sm:p-6 text-xs sm:text-sm text-ink space-y-2 sm:space-y-0 sm:flex sm:items-center sm:justify-between shadow-2xs">
+      <div class="flex items-start gap-3">
+        <div class="w-5 h-5 rounded-full border-2 border-amber-800 border-t-transparent animate-spin shrink-0 mt-0.5"></div>
+        <div class="space-y-1">
+          <p class="font-bold text-ink">
+            We’re reviewing Ubuntu Health Collective
+          </p>
+          <p class="text-xs text-ink-2 leading-relaxed max-w-2xl">
+            Usually within 2 working days. Until then your profile shows “Unverified” and opportunities stay as drafts — you can still set everything up.
+          </p>
+        </div>
+      </div>
+      <span class="text-[11px] font-mono text-ink-2 shrink-0 self-end sm:self-auto block sm:inline">
+        Submitted 29 Sep 10:02
+      </span>
+    </div>
+
+    <!-- Greeting Section -->
+    <div class="space-y-1">
+      <h1 class="font-serif text-3xl sm:text-4xl font-bold text-ink tracking-tight">
+        Welcome, Grace.
+      </h1>
+      <p class="text-xs sm:text-sm text-ink-2">
+        Three things to do while you wait.
+      </p>
+    </div>
+
+    <!-- Onboarding Step Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Card 01: Draft Opportunity -->
+      <div class="bg-white border border-line rounded-2xl p-6 flex flex-col justify-between space-y-6 hover:shadow-md hover:border-forest/40 transition-all duration-200">
+        <div class="space-y-3">
+          <span class="text-xs font-mono font-bold text-forest uppercase tracking-wider block">01</span>
+          <h2 class="font-bold text-base text-ink">Draft your first opportunity</h2>
+          <p class="text-xs text-ink-2 leading-relaxed">
+            Publishes automatically the moment you’re verified.
+          </p>
+        </div>
+        <a href="/opportunity.html" class="inline-block text-center bg-forest text-paper font-bold px-5 py-2.5 rounded-lg text-xs hover:bg-forest-dark hover:-translate-y-0.5 shadow-2xs transition-all cursor-pointer">
+          Start draft
+        </a>
+      </div>
+
+      <!-- Card 02: Invite Verifiers -->
+      <div class="bg-white border border-line rounded-2xl p-6 flex flex-col justify-between space-y-6 hover:shadow-md hover:border-forest/40 transition-all duration-200">
+        <div class="space-y-3">
+          <span class="text-xs font-mono font-bold text-forest uppercase tracking-wider block">02</span>
+          <h2 class="font-bold text-base text-ink">Invite verifiers</h2>
+          <p class="text-xs text-ink-2 leading-relaxed">
+            Field leads who can approve hours. Each approval is logged under their name.
+          </p>
+        </div>
+        <a href="/teams.html" class="inline-block text-center bg-paper border border-line text-ink font-bold px-4 py-2.5 rounded-lg text-xs hover:bg-white hover:border-ink transition-all cursor-pointer">
+          Invite by WhatsApp or email
+        </a>
+      </div>
+
+      <!-- Card 03: Certificate Setup -->
+      <div class="bg-white border border-line rounded-2xl p-6 flex flex-col justify-between space-y-6 hover:shadow-md hover:border-forest/40 transition-all duration-200">
+        <div class="space-y-3">
+          <span class="text-xs font-mono font-bold text-forest uppercase tracking-wider block">03</span>
+          <h2 class="font-bold text-base text-ink">Set your certificate</h2>
+          <p class="text-xs text-ink-2 leading-relaxed">
+            Add your logo and signatory. No design work — the layout is fixed so it can’t be forged.
+          </p>
+        </div>
+        <a href="/certificates.html" class="inline-block text-center bg-paper border border-line text-ink font-bold px-5 py-2.5 rounded-lg text-xs hover:bg-white hover:border-ink transition-all cursor-pointer">
+          Set up
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Review Proof Items Section -->
+    <div class="bg-white border border-line rounded-2xl p-6 space-y-4 shadow-2xs">
+      <h3 class="font-bold text-xs text-ink uppercase tracking-wider">
+        What we submitted for review
+      </h3>
+
+      <div class="flex flex-wrap items-center gap-3 text-xs font-medium">
+        <!-- Item 1 -->
+        <div class="bg-paper border border-line/80 px-4 py-2.5 rounded-xl flex items-center gap-2.5 text-ink">
+          <span>Certificate of registration.pdf</span>
+          <span class="text-forest font-bold">✓</span>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="bg-paper border border-line/80 px-4 py-2.5 rounded-xl flex items-center gap-2.5 text-ink">
+          <span>Registration no. INDRA/0442</span>
+          <span class="text-forest font-bold">✓</span>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="bg-paper border border-line/80 px-4 py-2.5 rounded-xl flex items-center gap-2.5 text-ink">
+          <span>Representative ID · private</span>
+          <span class="text-forest font-bold">✓</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Mobile Drawer Controller Script -->
+  <script>
+    const mobileDrawerBtn = document.getElementById('mobileDrawerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+
+    mobileDrawerBtn.addEventListener('click', () => {
+      sidebar.classList.remove('-translate-x-full');
+      sidebarBackdrop.classList.remove('hidden');
+    });
+
+    sidebarBackdrop.addEventListener('click', () => {
+      sidebar.classList.add('-translate-x-full');
+      sidebarBackdrop.classList.add('hidden');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-paper">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Opportunities — Ubuntu Health Collective | IMPACTRA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: '#1E4034',
+            'forest-dark': '#152E25',
+            'forest-light': '#2A5243',
+            ink: '#162110',
+            paper: '#F5F4EE',
+            seal: '#A87824',
+            line: '#DDDBC1',
+            'ink-2': '#5E6E67',
+          },
+          fontFamily: {
+            serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+            sans: ['"Public Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="h-full font-sans antialiased text-ink bg-paper flex flex-col md:flex-row overflow-x-hidden selection:bg-forest selection:text-paper">
+
+  <!-- ========================================== -->
+  <!-- MOBILE TOP HEADER BAR -->
+  <!-- ========================================== -->
+  <div class="md:hidden flex items-center justify-between px-4 py-3 bg-forest text-paper border-b border-forest-light z-30 sticky top-0">
+    <div class="flex items-center gap-2 font-serif text-base font-bold tracking-widest uppercase">
+      <div class="w-5 h-5 rounded bg-paper/10 border border-paper/20 flex items-center justify-center text-[10px] font-bold text-paper">✓</div>
+      <span>IMPACTRA</span>
+    </div>
+    <button id="mobileDrawerBtn" class="p-2 text-paper/80 hover:text-paper rounded-lg focus:bg-forest-light cursor-pointer">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- PERSISTENT DARK FOREST SIDEBAR -->
+  <!-- ========================================== -->
+  <aside id="sidebar" class="fixed md:static inset-y-0 left-0 transform -translate-x-full md:translate-x-0 w-64 bg-forest text-paper flex flex-col justify-between z-40 transition-transform duration-200 ease-in-out shrink-0">
+    <div class="p-6 space-y-8 overflow-y-auto">
+      
+      <!-- Brand Logo -->
+      <a href="/index.html" class="flex items-center gap-2 font-serif text-lg font-bold tracking-widest text-paper uppercase hover:opacity-90 transition-opacity">
+        <div class="w-6 h-6 rounded bg-paper/10 border border-paper/20 flex items-center justify-center text-xs font-bold text-paper">✓</div>
+        <span>IMPACTRA</span>
+      </a>
+
+      <!-- Organization Status Badge -->
+      <div class="bg-forest-light/60 border border-paper/15 rounded-xl p-3.5 space-y-1">
+        <p class="font-bold text-xs text-paper truncate">Ubuntu Health Collective</p>
+        <p class="text-[11px] text-emerald-300 font-medium flex items-center gap-1.5">
+          <span>✓</span>
+          <span>Verified org · Kampala</span>
+        </p>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="space-y-1 text-xs font-medium">
+        <!-- Overview -->
+        <a href="/health.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-lg text-paper/70 hover:text-paper hover:bg-forest-light/40 cursor-pointer transition-colors">
+          <div class="flex items-center gap-3">
+            <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+            <span>Overview</span>
+          </div>
+        </a>
+
+        <!-- Opportunities (Active) -->
+        <a href="/publish.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-lg bg-paper/15 text-paper font-bold cursor-pointer transition-colors">
+          <div class="flex items-center gap-3">
+            <svg class="w-4 h-4 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span>Opportunities</span>
+          </div>
+          <span class="text-[11px] font-mono text-paper/90 font-bold">5</span>
+        </a>
+
+        <!-- Applicants -->
+        <a href="/application.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-lg text-paper/70 hover:text-paper hover:bg-forest-light/40 cursor-pointer transition-colors">
+          <div class="flex items-center gap-3">
+            <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <span>Applicants</span>
+          </div>
+          <span class="text-[11px] font-mono text-paper/60">9</span>
+        </a>
+
+        <!-- Verification -->
+        <a href="/verification.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-lg text-paper/70 hover:text-paper hover:bg-forest-light/40 cursor-pointer transition-colors">
+          <div class="flex items-center gap-3">
+            <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            <span>Verification</span>
+          </div>
+          <span class="text-[11px] font-mono text-paper/60">12</span>
+        </a>
+
+        <!-- Certificates -->
+        <a href="/certificates.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-lg text-paper/70 hover:text-paper hover:bg-forest-light/40 cursor-pointer transition-colors">
+          <div class="flex items-center gap-3">
+            <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <span>Certificates</span>
+          </div>
+        </a>
+
+        <!-- Reports -->
+        <a href="/reports.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-lg text-paper/70 hover:text-paper hover:bg-forest-light/40 cursor-pointer transition-colors">
+          <div class="flex items-center gap-3">
+            <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 012-2h2a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            <span>Reports</span>
+          </div>
+        </a>
+
+        <!-- Team -->
+        <a href="/teams.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-lg text-paper/70 hover:text-paper hover:bg-forest-light/40 cursor-pointer transition-colors">
+          <div class="flex items-center gap-3">
+            <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            <span>Team</span>
+          </div>
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Mobile Drawer Backdrop -->
+  <div id="sidebarBackdrop" class="fixed inset-0 bg-ink/50 backdrop-blur-xs z-30 hidden md:hidden"></div>
+
+  <!-- ========================================== -->
+  <!-- MAIN WORKSPACE -->
+  <!-- ========================================== -->
+  <main class="flex-1 p-4 sm:p-8 lg:p-12 max-w-6xl mx-auto space-y-6 w-full">
+    
+    <!-- Title & Search / Create Action Header -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div class="space-y-1">
+        <h1 class="font-serif text-3xl sm:text-4xl font-bold text-ink tracking-tight">
+          Opportunities
+        </h1>
+        <p class="text-xs text-ink-2 font-mono">
+          5 active · 1 draft · 12 closed
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3 self-start sm:self-auto">
+        <button type="button" class="bg-white border border-line text-ink font-bold px-4 py-2.5 rounded-lg text-xs hover:bg-paper transition-all cursor-pointer">
+          Search
+        </button>
+        <a href="/opportunity.html" class="inline-flex items-center gap-2 bg-forest text-paper font-bold px-5 py-2.5 rounded-lg text-xs hover:bg-forest-dark hover:-translate-y-0.5 shadow-2xs transition-all cursor-pointer">
+          <span>+</span> New opportunity
+        </a>
+      </div>
+    </div>
+
+    <!-- Opportunities Table -->
+    <div class="bg-white border border-line rounded-2xl overflow-hidden shadow-2xs">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="border-b border-line text-[10px] font-mono uppercase text-ink-2 bg-paper/20">
+              <th class="py-3.5 px-4 sm:px-6 font-bold tracking-wider">OPPORTUNITY</th>
+              <th class="py-3.5 px-4 sm:px-6 font-bold tracking-wider">STATUS</th>
+              <th class="py-3.5 px-4 sm:px-6 font-bold tracking-wider">DATES</th>
+              <th class="py-3.5 px-4 sm:px-6 font-bold tracking-wider">FILLED</th>
+              <th class="py-3.5 px-4 sm:px-6 font-bold tracking-wider">APPLICANTS</th>
+              <th class="py-3.5 px-4 sm:px-6 font-bold tracking-wider">TO VERIFY</th>
+              <th class="py-3.5 px-4 sm:px-6 font-bold tracking-wider text-right">ACTION</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-line font-medium">
+            
+            <!-- Row 1: Community HIV testing mobilizer -->
+            <tr class="hover:bg-paper/30 transition-colors">
+              <td class="py-4 px-4 sm:px-6">
+                <p class="font-bold text-sm text-ink">Community HIV testing mobilizer</p>
+                <p class="text-[11px] text-ink-2">HIV testing mobilization</p>
+              </td>
+              <td class="py-4 px-4 sm:px-6">
+                <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">Published</span>
+              </td>
+              <td class="py-4 px-4 sm:px-6 text-ink font-mono">4 Oct – 25 Oct</td>
+              <td class="py-4 px-4 sm:px-6">
+                <div class="flex items-center gap-2">
+                  <span class="font-bold font-mono text-ink">14 / 20</span>
+                  <div class="w-16 bg-paper rounded-full h-1.5 overflow-hidden border border-line hidden sm:block">
+                    <div class="bg-forest h-full rounded-full" style="width: 70%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td class="py-4 px-4 sm:px-6 font-mono text-ink">9</td>
+              <td class="py-4 px-4 sm:px-6 font-mono font-bold text-seal">8</td>
+              <td class="py-4 px-4 sm:px-6 text-right">
+                <a href="/application.html" class="font-bold text-forest hover:underline">Manage</a>
+              </td>
+            </tr>
+
+            <!-- Row 2: Youth peer educator -->
+            <tr class="hover:bg-paper/30 transition-colors">
+              <td class="py-4 px-4 sm:px-6">
+                <p class="font-bold text-sm text-ink">Youth peer educator</p>
+                <p class="text-[11px] text-ink-2">Youth peer education</p>
+              </td>
+              <td class="py-4 px-4 sm:px-6">
+                <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-[10px] font-bold">Full</span>
+              </td>
+              <td class="py-4 px-4 sm:px-6 text-ink font-mono">Tuesdays · ongoing</td>
+              <td class="py-4 px-4 sm:px-6">
+                <div class="flex items-center gap-2">
+                  <span class="font-bold font-mono text-ink">12 / 12</span>
+                  <div class="w-16 bg-paper rounded-full h-1.5 overflow-hidden border border-line hidden sm:block">
+                    <div class="bg-forest h-full rounded-full" style="width: 100%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td class="py-4 px-4 sm:px-6 font-mono text-ink">3</td>
+              <td class="py-4 px-4 sm:px-6 font-mono font-bold text-seal">2</td>
+              <td class="py-4 px-4 sm:px-6 text-right">
+                <a href="/application.html" class="font-bold text-forest hover:underline">Manage</a>
+              </td>
+            </tr>
+
+            <!-- Row 3: Clinic support desk -->
+            <tr class="hover:bg-paper/30 transition-colors">
+              <td class="py-4 px-4 sm:px-6">
+                <p class="font-bold text-sm text-ink">Clinic support desk</p>
+                <p class="text-[11px] text-ink-2">Clinic support</p>
+              </td>
+              <td class="py-4 px-4 sm:px-6">
+                <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">Published</span>
+              </td>
+              <td class="py-4 px-4 sm:px-6 text-ink font-mono">Weekdays · ongoing</td>
+              <td class="py-4 px-4 sm:px-6">
+                <div class="flex items-center gap-2">
+                  <span class="font-bold font-mono text-ink">6 / 8</span>
+                  <div class="w-16 bg-paper rounded-full h-1.5 overflow-hidden border border-line hidden sm:block">
+                    <div class="bg-forest h-full rounded-full" style="width: 75%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td class="py-4 px-4 sm:px-6 font-mono text-ink">1</td>
+              <td class="py-4 px-4 sm:px-6 font-mono font-bold text-seal">2</td>
+              <td class="py-4 px-4 sm:px-6 text-right">
+                <a href="/application.html" class="font-bold text-forest hover:underline">Manage</a>
+              </td>
+            </tr>
+
+            <!-- Row 4: World AIDS Day outreach -->
+            <tr class="hover:bg-paper/30 transition-colors">
+              <td class="py-4 px-4 sm:px-6">
+                <p class="font-bold text-sm text-ink">World AIDS Day outreach</p>
+                <p class="text-[11px] text-ink-2">HIV testing mobilization</p>
+              </td>
+              <td class="py-4 px-4 sm:px-6">
+                <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 text-[10px] font-bold">Draft</span>
+              </td>
+              <td class="py-4 px-4 sm:px-6 text-ink font-mono">1 Dec</td>
+              <td class="py-4 px-4 sm:px-6">
+                <div class="flex items-center gap-2">
+                  <span class="font-mono text-ink-2">0 / 60</span>
+                  <div class="w-16 bg-paper rounded-full h-1.5 overflow-hidden border border-line hidden sm:block">
+                    <div class="bg-line h-full rounded-full" style="width: 0%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td class="py-4 px-4 sm:px-6 font-mono text-ink-2">&mdash;</td>
+              <td class="py-4 px-4 sm:px-6 font-mono text-ink-2">&mdash;</td>
+              <td class="py-4 px-4 sm:px-6 text-right">
+                <a href="/opportunity.html" class="font-bold text-forest hover:underline">Edit</a>
+              </td>
+            </tr>
+
+            <!-- Row 5: Condom distribution drive -->
+            <tr class="hover:bg-paper/30 transition-colors">
+              <td class="py-4 px-4 sm:px-6">
+                <p class="font-bold text-sm text-ink">Condom distribution drive</p>
+                <p class="text-[11px] text-ink-2">HIV testing mobilization</p>
+              </td>
+              <td class="py-4 px-4 sm:px-6">
+                <span class="px-2.5 py-1 rounded-full bg-paper border border-line text-ink-2 text-[10px] font-bold">Closed</span>
+              </td>
+              <td class="py-4 px-4 sm:px-6 text-ink font-mono">Aug 2026</td>
+              <td class="py-4 px-4 sm:px-6">
+                <div class="flex items-center gap-2">
+                  <span class="font-bold font-mono text-ink">25 / 25</span>
+                  <div class="w-16 bg-paper rounded-full h-1.5 overflow-hidden border border-line hidden sm:block">
+                    <div class="bg-forest h-full rounded-full" style="width: 100%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td class="py-4 px-4 sm:px-6 font-mono text-ink-2">&mdash;</td>
+              <td class="py-4 px-4 sm:px-6 font-mono font-bold text-emerald-700">0</td>
+              <td class="py-4 px-4 sm:px-6 text-right">
+                <a href="/reports.html" class="font-bold text-forest hover:underline">Report</a>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Mobile Drawer Script -->
+  <script>
+    const mobileDrawerBtn = document.getElementById('mobileDrawerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+
+    mobileDrawerBtn.addEventListener('click', () => {
+      sidebar.classList.remove('-translate-x-full');
+      sidebarBackdrop.classList.remove('hidden');
+    });
+
+    sidebarBackdrop.addEventListener('click', () => {
+      sidebar.classList.add('-translate-x-full');
+      sidebarBackdrop.classList.add('hidden');
+    });
+  </script>
+</body>
+</html>

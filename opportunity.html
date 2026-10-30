@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-paper">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Opportunity — IMPACTRA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: '#1E4034',
+            'forest-dark': '#152E25',
+            ink: '#162110',
+            paper: '#F5F4EE',
+            seal: '#A87824',
+            line: '#DDDBC1',
+            'ink-2': '#5E6E67',
+          },
+          fontFamily: {
+            serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+            sans: ['"Public Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="h-full font-sans antialiased text-ink bg-paper flex flex-col justify-between selection:bg-forest selection:text-paper">
+
+  <!-- ========================================== -->
+  <!-- TOP WIZARD NAVIGATION HEADER -->
+  <!-- ========================================== -->
+  <header class="bg-paper border-b border-line sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Close Action & Status -->
+      <div class="flex items-center gap-4">
+        <a href="/health.html" class="text-xs font-semibold text-ink-2 hover:text-ink flex items-center gap-1.5 transition-colors cursor-pointer">
+          <span class="text-sm">✕</span> Close
+        </a>
+        <div class="h-4 w-px bg-line hidden sm:block"></div>
+        <h1 class="text-sm font-bold text-ink hidden sm:block">New opportunity</h1>
+        <span class="text-xs font-mono text-ink-2 hidden md:inline">Draft saved 10:42</span>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3">
+        <button type="button" onclick="alert('Draft saved');" class="bg-white border border-line text-ink font-bold px-4 py-2 rounded-lg text-xs hover:bg-paper cursor-pointer transition-all">
+          Save draft
+        </button>
+        <button type="submit" form="opportunityForm" class="bg-forest text-paper font-bold px-5 py-2 rounded-lg text-xs hover:bg-forest-dark cursor-pointer transition-all shadow-xs">
+          Publish
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- MAIN WORKSPACE CONTAINER -->
+  <!-- ========================================== -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 py-8">
+    <form id="opportunityForm" class="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8 items-start">
+      
+      <!-- LEFT COLUMN: FORM INPUTS -->
+      <div class="space-y-6">
+        
+        <!-- Title -->
+        <div class="space-y-1.5">
+          <label for="title" class="block text-xs font-bold text-ink">Title</label>
+          <input 
+            type="text" 
+            id="title" 
+            name="title" 
+            value="Community HIV testing mobilizer" 
+            required
+            class="w-full bg-white border border-forest rounded-lg px-4 py-3 text-sm text-ink font-medium focus:outline-none focus:ring-1 focus:ring-forest transition-all"
+            oninput="updatePreview()"
+          />
+        </div>
+
+        <!-- Description -->
+        <div class="space-y-1.5">
+          <label for="description" class="block text-xs font-bold text-ink">Description</label>
+          <textarea 
+            id="description" 
+            name="description" 
+            rows="3" 
+            required
+            class="w-full bg-white border border-line rounded-lg p-4 text-sm text-ink focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest transition-all"
+            oninput="updatePreview()"
+          >Help people in Kawempe get tested early. You'll work at busy hotspots with a trained lead, referring people to our free testing tent.</textarea>
+        </div>
+
+        <!-- Category & Location Toggle -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Category -->
+          <div class="space-y-1.5">
+            <label for="category" class="block text-xs font-bold text-ink">Category</label>
+            <select id="category" name="category" class="w-full bg-white border border-line rounded-lg px-4 py-3 text-xs font-semibold text-ink focus:outline-none focus:border-forest cursor-pointer">
+              <option value="Health" selected>Health</option>
+              <option value="Education">Education</option>
+              <option value="Environment">Environment</option>
+            </select>
+          </div>
+
+          <!-- Location Toggle -->
+          <div class="space-y-1.5">
+            <label class="block text-xs font-bold text-ink">Location</label>
+            <div class="grid grid-cols-2 bg-white border border-line rounded-lg p-1 gap-1">
+              <button type="button" id="locInPersonBtn" onclick="setLocationType('in-person')" class="py-2 text-xs font-bold bg-forest text-paper rounded-md transition-all shadow-xs">
+                In person
+              </button>
+              <button type="button" id="locRemoteBtn" onclick="setLocationType('remote')" class="py-2 text-xs font-bold text-ink-2 hover:text-ink transition-all">
+                Remote
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- What volunteers will do -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <label class="block text-xs font-bold text-ink">What volunteers will do</label>
+            <span class="text-[11px] text-ink-2">clear steps reduce drop-out</span>
+          </div>
+          
+          <div class="bg-white border border-line rounded-xl divide-y divide-line overflow-hidden">
+            <!-- Step 1 -->
+            <div class="p-3.5 flex items-center gap-3">
+              <span class="text-xs font-mono font-bold text-ink-2">01</span>
+              <input type="text" value="Meet the coordinator at the Kawempe clinic gate by 7:00 for briefing." class="w-full text-xs text-ink focus:outline-none bg-transparent" />
+            </div>
+            <!-- Step 2 -->
+            <div class="p-3.5 flex items-center gap-3">
+              <span class="text-xs font-mono font-bold text-ink-2">02</span>
+              <input type="text" value="Reach 15 people at assigned hotspots and refer them to testers." class="w-full text-xs text-ink focus:outline-none bg-transparent" />
+            </div>
+            <!-- Add Step Button -->
+            <button type="button" class="w-full p-3.5 text-left text-xs font-bold text-ink-2 hover:text-forest hover:bg-paper/30 transition-colors flex items-center gap-2 cursor-pointer">
+              <span class="text-xs font-mono font-bold">03</span>
+              <span>+ Add a step</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dates, Shift & Volunteers needed -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <!-- Dates -->
+          <div class="space-y-1.5">
+            <label for="dates" class="block text-xs font-bold text-ink">Dates</label>
+            <input type="text" id="dates" name="dates" value="4 Oct – 25 Oct · Saturdays" class="w-full bg-white border border-line rounded-lg px-3.5 py-3 text-xs text-ink focus:outline-none focus:border-forest" />
+          </div>
+
+          <!-- Shift -->
+          <div class="space-y-1.5">
+            <label for="shift" class="block text-xs font-bold text-ink">Shift</label>
+            <input type="text" id="shift" name="shift" value="07:00 – 11:30" class="w-full bg-white border border-line rounded-lg px-3.5 py-3 text-xs text-ink font-mono focus:outline-none focus:border-forest" />
+          </div>
+
+          <!-- Volunteers needed Stepper -->
+          <div class="space-y-1.5">
+            <label class="block text-xs font-bold text-ink">Volunteers needed</label>
+            <div class="flex items-center justify-between bg-white border border-line rounded-lg px-3 py-2">
+              <button type="button" onclick="adjustSpots(-1)" class="w-7 h-7 bg-paper hover:bg-line/50 rounded flex items-center justify-center text-sm font-bold text-ink cursor-pointer">&minus;</button>
+              <span id="spotsCount" class="font-serif text-base font-bold text-ink">20</span>
+              <button type="button" onclick="adjustSpots(1)" class="w-7 h-7 bg-paper hover:bg-line/50 rounded flex items-center justify-center text-sm font-bold text-ink cursor-pointer">&plus;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Verification & Certificates Card -->
+        <div class="bg-white border border-line rounded-2xl p-6 space-y-5">
+          <h2 class="font-bold text-xs text-ink uppercase tracking-wider border-b border-line pb-3">Verification & certificates</h2>
+
+          <!-- Toggle 1: Photo Evidence -->
+          <div class="flex items-center justify-between gap-4">
+            <div class="space-y-0.5">
+              <p class="text-xs font-bold text-ink">Require photo evidence with each log</p>
+              <p class="text-[11px] text-ink-2">Stored privately — only your verifiers can view</p>
+            </div>
+            <label class="relative inline-flex items-center cursor-pointer shrink-0">
+              <input type="checkbox" checked class="sr-only peer">
+              <div class="w-10 h-6 bg-line peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-forest"></div>
+            </label>
+          </div>
+
+          <!-- Toggle 2: Track Outcome -->
+          <div class="flex items-center justify-between gap-4">
+            <div class="space-y-0.5">
+              <p class="text-xs font-bold text-ink">Track an outcome per shift</p>
+              <p class="text-[11px] text-ink-2">“People reached” · target 15</p>
+            </div>
+            <label class="relative inline-flex items-center cursor-pointer shrink-0">
+              <input type="checkbox" checked class="sr-only peer">
+              <div class="w-10 h-6 bg-line peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-forest"></div>
+            </label>
+          </div>
+
+          <!-- Dropdown: Auto-issue Certificate -->
+          <div class="flex items-center justify-between gap-4 pt-1">
+            <div class="space-y-0.5">
+              <p class="text-xs font-bold text-ink">Auto-issue certificate after</p>
+              <p class="text-[11px] text-ink-2">Signed by the verifier on record</p>
+            </div>
+            <select class="bg-paper border border-line rounded-lg px-3 py-2 text-xs font-semibold text-ink focus:outline-none focus:border-forest cursor-pointer">
+              <option value="16" selected>16 verified hours</option>
+              <option value="24">24 verified hours</option>
+              <option value="40">40 verified hours</option>
+            </select>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: LIVE PREVIEW & CHECKLIST -->
+      <div class="space-y-6">
+        
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-ink">Volunteer preview</span>
+          <span class="text-[11px] text-ink-2">Live in search ~1 min after publishing</span>
+        </div>
+
+        <!-- Volunteer Preview Card -->
+        <div class="bg-white border border-line rounded-2xl overflow-hidden shadow-sm space-y-4 p-5">
+          
+          <!-- Interactive Cover Photo Drop & Replace Zone -->
+          <div 
+            id="dropZone" 
+            onclick="document.getElementById('coverFileInput').click()"
+            ondragover="handleDragOver(event)"
+            ondragleave="handleDragLeave(event)"
+            ondrop="handleFileDrop(event)"
+            class="relative border border-dashed border-line rounded-xl h-28 bg-paper/60 flex flex-col items-center justify-center text-[11px] font-mono text-ink-2 cursor-pointer hover:bg-paper hover:border-forest transition-all overflow-hidden group"
+          >
+            <!-- Default Placeholder View -->
+            <div id="defaultDropText" class="flex flex-col items-center justify-center gap-1">
+              <span>cover photo · drop image</span>
+              <span class="text-[9px] text-forest font-bold opacity-0 group-hover:opacity-100 transition-opacity">Click or drag image to upload</span>
+            </div>
+
+            <!-- Active Image Preview View (Hidden by Default) -->
+            <img id="imagePreview" class="absolute inset-0 w-full h-full object-cover hidden" alt="Cover preview" />
+            
+            <!-- Replace Overlay Badge -->
+            <div id="replaceBadge" class="absolute bottom-2 right-2 bg-ink/70 text-paper text-[9px] px-2 py-0.5 rounded font-mono hidden group-hover:block">
+              Replace image
+            </div>
+          </div>
+          <input type="file" id="coverFileInput" class="hidden" accept="image/*" onchange="handleFileSelected(this)">
+
+          <!-- Preview Details -->
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-[11px] text-ink-2 font-medium flex items-center gap-1">
+                Ubuntu Health Collective <span class="text-forest font-bold">✓ Verified org</span>
+              </span>
+              <span id="previewSpots" class="font-bold text-ink font-mono text-[11px]">20 spots</span>
+            </div>
+
+            <h3 id="previewTitle" class="font-serif text-lg font-bold text-ink leading-snug">
+              Community HIV testing mobilizer
+            </h3>
+
+            <p class="text-xs text-ink-2 flex items-center gap-2">
+              <span>Sat 4 Oct · 7–11:30am</span>
+              <span>·</span>
+              <span>Kawempe, Kampala</span>
+            </p>
+
+            <div class="bg-emerald-50/80 border border-emerald-200/60 rounded-xl p-3 text-[11px] text-emerald-900 leading-relaxed">
+              Photo evidence required · certificate after 16 verified hours
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Checklist Status Box -->
+        <div class="bg-white border border-line rounded-2xl p-5 space-y-2 shadow-2xs">
+          <h4 class="font-bold text-xs text-ink">Checklist</h4>
+          <p id="checklistText" class="text-xs text-ink-2 leading-relaxed">
+            <span class="text-forest font-bold">✓ Title</span> · 
+            <span class="text-forest font-bold">✓ Steps</span> · 
+            <span class="text-forest font-bold">✓ Dates</span> · 
+            <span class="text-forest font-bold">✓ Capacity</span> · 
+            <span id="coverCheckStatus" class="text-seal font-semibold">◐ Cover photo (optional)</span>
+          </p>
+        </div>
+
+      </div>
+
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-6 border-t border-line bg-paper text-xs text-ink-2">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <div class="flex items-center gap-2">
+        <span class="font-serif text-sm font-bold text-forest">IMPACTRA</span>
+        <span>&copy; 2026 IMPACTRA Platform.</span>
+      </div>
+      <div class="flex gap-4 text-[11px]">
+        <a href="/health.html" class="hover:text-forest transition-colors cursor-pointer">Dashboard</a>
+        <a href="/application.html" class="hover:text-forest transition-colors cursor-pointer">Applicants</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script for Interactive Preview, Image Upload & Redirection -->
+  <script>
+    let spots = 20;
+
+    function adjustSpots(delta) {
+      spots = Math.max(1, spots + delta);
+      document.getElementById('spotsCount').textContent = spots;
+      document.getElementById('previewSpots').textContent = spots + ' spots';
+    }
+
+    function setLocationType(type) {
+      const inPersonBtn = document.getElementById('locInPersonBtn');
+      const remoteBtn = document.getElementById('locRemoteBtn');
+
+      if (type === 'in-person') {
+        inPersonBtn.className = 'py-2 text-xs font-bold bg-forest text-paper rounded-md transition-all shadow-xs';
+        remoteBtn.className = 'py-2 text-xs font-bold text-ink-2 hover:text-ink transition-all';
+      } else {
+        remoteBtn.className = 'py-2 text-xs font-bold bg-forest text-paper rounded-md transition-all shadow-xs';
+        inPersonBtn.className = 'py-2 text-xs font-bold text-ink-2 hover:text-ink transition-all';
+      }
+    }
+
+    function updatePreview() {
+      const title = document.getElementById('title').value;
+      document.getElementById('previewTitle').textContent = title || 'Community HIV testing mobilizer';
+    }
+
+    // Image Upload Handlers
+    function handleDragOver(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      document.getElementById('dropZone').classList.add('border-forest', 'bg-paper');
+    }
+
+    function handleDragLeave(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      document.getElementById('dropZone').classList.remove('border-forest', 'bg-paper');
+    }
+
+    function handleFileDrop(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      document.getElementById('dropZone').classList.remove('border-forest', 'bg-paper');
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        displayImage(e.dataTransfer.files[0]);
+      }
+    }
+
+    function handleFileSelected(input) {
+      if (input.files && input.files[0]) {
+        displayImage(input.files[0]);
+      }
+    }
+
+    function displayImage(file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const preview = document.getElementById('imagePreview');
+        preview.src = e.target.result;
+        preview.classList.remove('hidden');
+        document.getElementById('defaultDropText').classList.add('hidden');
+        document.getElementById('replaceBadge').classList.remove('hidden');
+
+        // Update checklist status
+        const coverCheck = document.getElementById('coverCheckStatus');
+        coverCheck.className = 'text-forest font-bold';
+        coverCheck.textContent = '✓ Cover photo';
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Direct redirection to publish.html on form submission
+    document.getElementById('opportunityForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      window.location.href = '/publish.html';
+    });
+  </script>
+</body>
+</html>
